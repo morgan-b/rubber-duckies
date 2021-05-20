@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HomeCard from "../components/homecard";
 import popupS from "popups";
 import placeholder from "../assets/blue.png";
+import NavBar from "../components/NavBar";
 
 
 
@@ -17,6 +18,8 @@ function onClick(props){
 }
 function Homepage() {
   return (
+    <>
+    <NavBar/>
       <div className="container">
     <div className="row row-cols-xs-3 row-cols-sm-3 row-cols-md-3  g-3">
 
@@ -41,6 +44,7 @@ function Homepage() {
 
     </div>
     </div>
+    </>
   );
 }
 export default Homepage;
