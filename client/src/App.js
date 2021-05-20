@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 
 function App() {
   return (
+
     <Router>
       <div>
         <NavBar />
@@ -20,6 +21,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+
   );
 }
 
