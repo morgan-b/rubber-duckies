@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "../components/NavBar";
-import {ProfileCard} from "../components/profilecard";
+import {ProfileCard} from "../components/ProfileCard";
 
 
 function Profile() {
