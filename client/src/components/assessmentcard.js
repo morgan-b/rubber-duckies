@@ -1,53 +1,31 @@
 import React from "react";
 
-export function AssessCard(props) {
+
+
+export default function AssessCard(props) {
   return (
-    <div className="card">
-    <div className="row">
-  
-        <img
-          key={5 + props.id}
-          alt={props.title}
-          className="card-img"
-          src={props.imageLink}
-        ></img>
-      
+    <div className="card text-center">
 
-
-          <h5 key={1 + props.id} className="card-title">
-            {props.title}
-          </h5>
-          <h5 key={2 + props.id} className="card-title">
-            {props.author}
-          </h5>
-          <p key={3 + props.id} className="card-text">
-            {props.description}
-          </p>
-          <a
-            className="btn btn-light homebtns"
-            key={4 + props.id}
-            href={props.link}
-            target="_blank"
-            rel="noreferrer"
+          <a className="btn btn-light" 
           >
-            Buy Here
+          <img
+          key={props.id}
+          // alt={props.title}
+          className="card-img"
+          src={props.thumbnail}
+          alt="image"
+          ></img>
           </a>
-          </div>
-           </div>
- 
+
+         <button
+          className="btn btn-light"
+          // title={props.title}
+          onClick={props.onClick}
+         >
+          I'm 
+         </button>
       
-   
+    </div>
   );
 }
 
-export function AssessCardBtn(props) {
-  return (
-    <button
-      className="btn btn-light"
-      title={props.title}
-      onClick={props.onClick}
-    >
-      Save Book
-    </button>
-  );
-}

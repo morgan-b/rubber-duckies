@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Assessment from "./pages/Assessment";
 
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route exact path={"/login"}>
             <Login/>
+          </Route>
+          <Route exact path={"/assessment"}>
+            <Assessment/>
           </Route>
         </Switch>
       </div>

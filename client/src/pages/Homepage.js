@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HomeCard from "../components/homecard";
+import HomeCard from "../components/HomeCard";
 import popupS from "popups";
 import placeholder from "../assets/blue.png";
 import NavBar from "../components/NavBar";
@@ -21,7 +21,7 @@ function Homepage() {
     <>
     <NavBar/>
       <div className="container">
-    <div className="row row-cols-xs-3 row-cols-sm-3 row-cols-md-3  g-3">
+    <div className="row row-cols-xs-3 row-cols-sm-3 row-cols-md-3">
 
         <div className="col">
           <HomeCard onClick={onClick}></HomeCard>
