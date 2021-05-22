@@ -6,16 +6,17 @@ export default function AssessCard(props) {
   return (
     <div className="card text-center">
 
-          <a className="btn btn-light" 
-          >
+          {/* <a className="btn btn-light" 
+          > */}
           <img
           key={props.id}
           // alt={props.title}
           className="card-img"
           src={props.thumbnail}
           alt="image"
+         
           ></img>
-          </a>
+          {/* </a> */}
 
          <button
           className="btn btn-light"
