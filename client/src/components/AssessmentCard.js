@@ -4,7 +4,7 @@ import React from "react";
 
 export default function AssessCard(props) {
   return (
-    <div className="card text-center">
+    <div className="card text-center assessCard">
 
           {/* <a className="btn btn-light" 
           > */}
