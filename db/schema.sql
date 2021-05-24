@@ -3,22 +3,6 @@ CREATE database rubber_duckiesDB;
 
 USE rubber_duckiesDB;
 
-CREATE TABLE USERNEEDS (
-UserNeedsId INT NOT NULL AUTO_INCREMENT,
-UserNeedsDescription VARCHAR(50),
-PRIMARY KEY (UserNeedsId)
-);
-INSERT INTO USERNEEDS (UserNeedsDescription)
-VALUES ("Hungry"),("Thirsty"),("Restroom") ;
-
-CREATE TABLE USEREMOTIONS (
-UserEmotionId INT NOT NULL AUTO_INCREMENT,
-EmotionDescription VARCHAR(50),
-PRIMARY KEY(UserEmotionId)
-);
-INSERT INTO USEREMOTIONS (EmotionDescription)
-VALUES ("Happy"),("Sad"),("Nervous") ;
-
 
 CREATE TABLE CAREGIVER (
 caregiverid INT NOT NULL AUTO_INCREMENT,
@@ -38,24 +22,29 @@ username VARCHAR(50) NULL,
 firstname VARCHAR(50) NULL,
 lastname VARCHAR(50) NULL,
 email VARCHAR(100) NULL,
-caregiverid INT not null,
+caregiverid  int null,
+happy VARCHAR(256) null,
+sad VARCHAR(256) null,
+nervous VARCHAR(256) null,
+hungry VARCHAR(256) null,
+thirsty VARCHAR(256) null,
+restroom VARCHAR(256) null,
 password VARCHAR(8)NOT NULL,
 PRIMARY KEY (userid),
 FOREIGN KEY (caregiverid) REFERENCES CAREGIVER (caregiverid) 
 );
 
 
+
 CREATE TABLE USERACTIONDETAIL (
 
 UserActionDetailId INT NOT NULL AUTO_INCREMENT,
-UserEmotionId INT NOT NULL,
-UserNeedsId INT NOT NULL,
+UserEmotion VARCHAR(50) NULL,
+UserNeeds  VARCHAR(50) NULL,
 createdDate date NOT NULL,
 CreatedTime time NOT NULL,
 userid INT NOT NULL,
 PRIMARY KEY (UserActionDetailId),
-FOREIGN KEY (UserEmotionId) REFERENCES USEREMOTIONS (UserEmotionId) ,
-FOREIGN KEY (UserNeedsId) REFERENCES USERNEEDS (UserNeedsId) ,
 FOREIGN KEY (userid) REFERENCES USERS (userid) 
 
 );
