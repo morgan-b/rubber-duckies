@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS rubber_duckiesDB;
+CREATE database rubber_duckiesDB;
+
 USE rubber_duckiesDB;
 
 CREATE TABLE USERNEEDS (
