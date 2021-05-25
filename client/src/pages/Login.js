@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useHistory} from "react-router-dom";
 import logo from "../assets/logo-duckies.png";
 import "./style.css";
 import LoginWrapper from "../components/LoginWrapper"
@@ -11,6 +12,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const [usertype, setUsertype] = useState('');
 
+    const history = useHistory();
 
 //When user inputs email, set email
 const loginEmailChange = (e) => {
@@ -39,7 +41,10 @@ const handleLogin = (e) => {
         email: email,
         password: password
     })
-    .then(res => console.log("user logged in"))
+    .then(res => {
+    console.log("user logged in");
+    history.push("/home")
+    })
     .catch(err => console.log(err))
 }
 else if (usertype === "caregiver") {
@@ -47,7 +52,11 @@ else if (usertype === "caregiver") {
         email: email,
         password: password
     })
-    .then(res => console.log("caregiver logged in"))
+    .then(res => {
+        console.log("caregiver logged in");
+        history.push("/profile")
+
+    })
     .catch(err => console.log(err))
 
 }

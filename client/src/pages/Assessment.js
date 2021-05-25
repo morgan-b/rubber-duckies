@@ -11,10 +11,11 @@ import purple from "../assets/purple.jpg";
 import green from "../assets/green.jpg";
 import black from "../assets/black.png";
 import Apiroutes from "../utils/Apiroutes"
+import "./style.css";
 
 
 
-const emneeds = ["hungry", "thirsty" ,"restroom", "happy","sad","nervous"]
+const emneeds = ["Hungry", "Thirsty" ,"Restroom", "Happy","Sad","Nervous"]
 
 
 
@@ -35,16 +36,19 @@ function Assessment() {
 
   function onSave(event){
     event.preventDefault();
-    // Apiroutes.assessmentSave
-if (emIndex < (emneeds.length-1)) {setEmIndex(emIndex+1)
-  Apiroutes.assessmentSave}
-else
-{history.push("/home")
+
+if (emIndex < (emneeds.length-1)) {
+  setEmIndex(emIndex+1)
+  //Save user response
+  Apiroutes.assessmentSave;
+  //set resCards to empty so cards revert to colors for next question
+  setResCards([]);
+} else {
+  history.push("/home")
 }
   }
 
   function handleFormSubmit(event) {
-
 
     event.preventDefault();
     SearchApi.GetImages(formObject.value)
@@ -53,11 +57,12 @@ else
       .then(() => console.log(resCards))
       .catch((err) => console.log(err));
   }
+
+
   return (
     <div className="Container">
       <NavBar />
  
-    
       <AssessWrapper onClick={onSave} onSearch={handleFormSubmit} onChange={handleInputChange} emotionNeeds={emneeds[emIndex]}>
         {resCards.length ? (
           resCards.map((resCard) => (
