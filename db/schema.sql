@@ -42,7 +42,6 @@ UserActionDetailId INT NOT NULL AUTO_INCREMENT,
 UserEmotion VARCHAR(50) NULL,
 UserNeeds  VARCHAR(50) NULL,
 createdDate date NOT NULL,
-CreatedTime time NOT NULL,
 userid INT NOT NULL,
 PRIMARY KEY (UserActionDetailId),
 FOREIGN KEY (userid) REFERENCES USERS (userid) 
