@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useHistory} from "react-router-dom";
 import logo from "../assets/logo-duckies.png";
 import "./style.css";
 import LoginWrapper from "../components/LoginWrapper";
@@ -16,6 +17,7 @@ const [signupInfo, setSignupInfo] = useState({
   password: ""
 })
 
+const history = useHistory();
 //use to set user type so we know which table to make POST request 
 //because there are separate tables fro user and caregiver
 const [usertype, setUsertype] = useState('');
@@ -38,19 +40,22 @@ const handleSubmit = (e) => {
 
   if(usertype === "user") {
     Apiroutes.userSignup(signupInfo)
-    .then(res => console.log("user signed in"))
+    .then(res => {
+      console.log("user signed in")
+      history.push("/assessment")
+    })
     .catch(err => console.log(err))
   }
   else if (usertype === "caregiver") {
     Apiroutes.cgSignup(signupInfo)
-    .then(res => console.log("caregiver signed in"))
+    .then(res => {
+      console.log("caregiver signed in")
+      //placeholder, this should divery new caregivers to page where they add their users
+      history.push("/profile")
+    })
     .catch(err => console.log(err))
   }
 }
-
-
-
-
 
 
     return (

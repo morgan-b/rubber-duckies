@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from "./pages/Homepage";
-import NavBar from "./components/NavBar";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Assessment from "./pages/Assessment";
+import AddUser from "./pages/AddUser";
 
 
 function App() {
@@ -28,6 +28,9 @@ function App() {
           </Route>
           <Route exact path={"/assessment"}>
             <Assessment/>
+          </Route>
+          <Route exact path={"/adduser"}>
+            <AddUser/>
           </Route>
         </Switch>
       </div>

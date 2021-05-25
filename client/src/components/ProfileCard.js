@@ -1,11 +1,9 @@
 import React from "react";
 
-export function ProfileCard(props) {
+export default function ProfileCard(props) {
   return (
-    <div className="card">
-    <div className="row">
+    <div className="card m-3 text-center">
   
-
           <h5 key={1 + props.id} className="card-title">
             {/* {props.first_name} */} Name Placeholder
           </h5>
@@ -25,7 +23,6 @@ export function ProfileCard(props) {
            Placeholder
           </a>
           </div>
-           </div>
  
       
    
