@@ -25,7 +25,7 @@ function AssessWrapper(props) {
           </form>
         </div>
       </div>
-      <div className="row row-cols-xs-3 row-cols-sm-3 row-cols-md-3 row-cols-lg-3">
+      <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3">
         {props.children}
       </div>
     </section>
