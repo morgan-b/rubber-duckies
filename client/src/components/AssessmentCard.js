@@ -6,7 +6,7 @@ export default function AssessCard(props) {
   return (
     <div className="card text-center assessCard">
 
-          <button className="btn btn-light" 
+          <button className="btn card-img" 
           onClick={props.onSave}
           >
           <img
