@@ -40,7 +40,7 @@ User.init(
       type: DataTypes.INTEGER,
       references: {
         model: "caregiver",
-        key: "id",
+        key: "caregiverid",
         unique: false,
       },
     },
