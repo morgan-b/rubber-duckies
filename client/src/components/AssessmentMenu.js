@@ -6,9 +6,8 @@ export default function AssessCard(props) {
   return (
     <div className="card text-center assessCard">
 
-          <button className="btn btn-light" 
-          onClick={props.onSave}
-          >
+          {/* <a className="btn btn-light" 
+          > */}
           <img
           key={props.id}
           // alt={props.title}
@@ -17,9 +16,15 @@ export default function AssessCard(props) {
           alt="image"
          
           ></img>
-          </button>
+          {/* </a> */}
 
-      
+         <button
+          className="btn btn-light"
+          // title={props.title}
+          onClick={props.onClick}
+         >
+          I'm 
+         </button>
       
     </div>
   );

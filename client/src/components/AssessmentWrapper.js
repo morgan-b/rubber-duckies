@@ -4,7 +4,7 @@ function AssessWrapper(props) {
   return (
     <section className="container">
       <div className="row">
-        <h2 className="col-5">Placeholder</h2>
+        <h2 className="col-5">{props.emotionNeeds}</h2>
         <div className="col-7">
           <form>
             <div className="row g-3 justify-content-end">
