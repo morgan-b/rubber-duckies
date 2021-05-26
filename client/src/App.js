@@ -7,35 +7,32 @@ import Login from "./pages/Login";
 import Assessment from "./pages/Assessment";
 import AddUser from "./pages/AddUser";
 
-
 function App() {
   return (
-
     <Router>
       <div>
         <Switch>
-          <Route exact path={["/","/home"]}>
+          <Route exact path={["/", "/home"]}>
             <Homepage />
           </Route>
           <Route exact path={"/profile"}>
             <Profile />
           </Route>
           <Route exact path={"/signup"}>
-            <Signup/>
+            <Signup />
           </Route>
           <Route exact path={"/login"}>
-            <Login/>
+            <Login />
           </Route>
           <Route exact path={"/assessment"}>
-            <Assessment/>
+            <Assessment />
           </Route>
           <Route exact path={"/adduser"}>
-            <AddUser/>
+            <AddUser />
           </Route>
         </Switch>
       </div>
     </Router>
-
   );
 }
 
