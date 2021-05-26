@@ -8,10 +8,10 @@ export default {
      return axios.post("api/userlogin", userData)
  },
  cgLogin: function (cgData) {
-     return axios.post("api/cglogin", cgData)
+     return axios.post("api/users/cglogin", cgData)
  },
  userSignup: function (userData) {
-     return axios.post("api/usersignup", userData)
+     return axios.post("api/users/usersignup", userData)
  },
  cgSignup: function (cgData) {
     return axios.post("api/users/cgsignup", cgData)

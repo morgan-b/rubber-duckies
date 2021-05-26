@@ -29,7 +29,7 @@ nervous VARCHAR(256) null,
 hungry VARCHAR(256) null,
 thirsty VARCHAR(256) null,
 restroom VARCHAR(256) null,
-password VARCHAR(8)NOT NULL,
+password VARCHAR(100)NOT NULL,
 PRIMARY KEY (userid),
 FOREIGN KEY (caregiverid) REFERENCES CAREGIVER (caregiverid) 
 );
