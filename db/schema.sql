@@ -10,7 +10,7 @@ username VARCHAR(50) NULL,
 firstname VARCHAR(50) NULL,
 lastname VARCHAR(50) NULL,
 email VARCHAR(100) NULL,
-password VARCHAR(8)NOT NULL,
+password VARCHAR(100)NOT NULL,
 PRIMARY KEY(caregiverid)
 
 );
