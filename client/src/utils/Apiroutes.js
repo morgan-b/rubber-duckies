@@ -5,7 +5,7 @@ export default {
     //created 2 separate routes for user or caregiver login as the post 
     //request will be makde to different tables depending on user type
  userLogin: function (userData) {
-     return axios.post("api/userlogin", userData)
+     return axios.post("api/users/userlogin", userData)
  },
  cgLogin: function (cgData) {
      return axios.post("api/users/cglogin", cgData)

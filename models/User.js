@@ -46,27 +46,27 @@ User.init(
     },
     happy: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: ""
     },
     sad: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: ""
     },
     nervous: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: ""
     },
     hungry: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: ""
     },
     thirsty: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: ""
     },
     restroom: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: ""
     },
     password: {
       type: DataTypes.STRING,
