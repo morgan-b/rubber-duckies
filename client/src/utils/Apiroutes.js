@@ -14,7 +14,7 @@ export default {
      return axios.post("api/usersignup", userData)
  },
  cgSignup: function (cgData) {
-    return axios.post("api/cgsignup", cgData)
+    return axios.post("api/users/cgsignup", cgData)
 },
 
 assessmentSave: function (userChoice) {

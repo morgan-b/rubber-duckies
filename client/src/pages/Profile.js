@@ -12,7 +12,7 @@ return (
     <NavBar/>
 <div className="Container">
 
-<ProfileWelcome name={"Andre"}/>
+<ProfileWelcome name={"Andres"}/>
 
 <div className="row">
     <div className="col-1 col-md-6 col-lg-6">
