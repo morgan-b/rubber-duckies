@@ -21,14 +21,6 @@ function HomeCard(props) {
           ></img>
           </a>
 
-         <button
-          className="btn btn-light"
-          title={props.title}
-          onClick={props.onClick}
-         >
-          I'm {props.communication}
-         </button>
-      
     </div>
   );
 }

@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Assessment from "./pages/Assessment";
 import AddUser from "./pages/AddUser";
+import WelcomeUser from "./pages/WelcomeUser";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route exact path={"/adduser"}>
             <AddUser />
+          </Route>
+          <Route exact path={"/welcomeuser"}>
+            <WelcomeUser />
           </Route>
         </Switch>
       </div>
