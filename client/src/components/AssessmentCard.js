@@ -7,7 +7,7 @@ export default function AssessCard(props) {
     <div className="card text-center assessCard">
 
           <button className="btn card-img" 
-          onClick={props.onSave}>
+          onClick={(e) => props.onSave(e, props.link)}>
           <img
           key={props.id}
           // alt={props.title}
