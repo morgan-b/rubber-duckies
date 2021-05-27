@@ -13,6 +13,7 @@ import black from "../assets/black.png";
 import Apiroutes from "../utils/Apiroutes";
 import "./style.css";
 
+//array to hold all wants and needs we need to loop through
 const emneeds = ["Hungry", "Thirsty", "Restroom", "Happy", "Sad", "Nervous"];
 
 function Assessment() {
@@ -22,22 +23,41 @@ function Assessment() {
   const [emType, setEmType] = useState();
   const history = useHistory();
 
+  const [userChoice, setUserChoice] = useState({
+    hungry: '',
+    thirsty:'',
+    restroom:'',
+    happy:'',
+    sad:'',
+    nervous:''
+  });
+
+
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({ ...formObject, value });
     console.log(formObject);
   }
 
-  function onSave(event) {
-    event.preventDefault();
+  function onSave(e, link) {
+    console.log("LINK:", link)
+    e.preventDefault();
 
     if (emIndex < emneeds.length - 1) {
+     setUserChoice({...userChoice,[emneeds[emIndex].toLowerCase()]: link})
       setEmIndex(emIndex + 1);
-      //Save user response
-      Apiroutes.assessmentSave;
+
+
       //set resCards to empty so cards revert to colors for next question
       setResCards([]);
     } else {
+      console.log(userChoice)
+
+      //using placeholder integar to check that backend route working
+      //need to figure out how to pass actual user id to backend
+      let userid = 2
+      //Save user response
+      Apiroutes.assessmentSave(userid, userChoice);
       history.push("/home");
     }
   }
@@ -56,7 +76,6 @@ function Assessment() {
       <NavBar />
 
       <AssessWrapper
-        onClick={onSave}
         onSearch={handleFormSubmit}
         onChange={handleInputChange}
         emotionNeeds={emneeds[emIndex]}
@@ -65,6 +84,8 @@ function Assessment() {
           resCards.map((resCard) => (
             <div className="col imgcol">
               <AssessCard
+                onClick={onSave}
+                link={resCard.thumbnail}
                 key={resCard.thumbnail}
                 id={resCard.thumbnail}
                 thumbnail={resCard.thumbnail}
@@ -75,13 +96,24 @@ function Assessment() {
         ) : (
           <>
             <div className="col imgcol">
-              <AssessCard key={1} thumbnail={red} onSave={onSave}></AssessCard>
+              <AssessCard 
+              link={"../assets/red.jpg"}
+              key={1} 
+              thumbnail={red} 
+              onSave={onSave}>
+
+              </AssessCard>
             </div>
             <div className="col imgcol">
-              <AssessCard key={2} thumbnail={blue} onSave={onSave}></AssessCard>
+              <AssessCard 
+              link={"../assets/blue.png"}
+              key={2} 
+              thumbnail={blue} 
+              onSave={onSave}></AssessCard>
             </div>
             <div className="col imgcol">
               <AssessCard
+                link={"../assets/yellow.jpg"}
                 key={3}
                 thumbnail={yellow}
                 onSave={onSave}
@@ -89,6 +121,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
+              link={"../assets/purple.jpg"}
                 key={4}
                 thumbnail={purple}
                 onSave={onSave}
@@ -96,6 +129,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
+              link={"../assets/black.png"}
                 key={5}
                 thumbnail={black}
                 onSave={onSave}
@@ -103,6 +137,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
+              link={"../assets/green.jpg"}
                 key={6}
                 thumbnail={green}
                 onSave={onSave}
