@@ -18,6 +18,6 @@ export default {
 },
 
 assessmentSave: function (userChoice) {
-    return axios.post("api/user", userChoice)
+    return axios.post("api/assess", userChoice)
 }
 }
