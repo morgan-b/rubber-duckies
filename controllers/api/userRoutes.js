@@ -8,7 +8,7 @@ router.post("/cgsignup", async (req, res) => {
     const caregiverData = await Caregiver.create(req.body);
 
     req.session.save(() => {
-      req.session.caregiver_id = caregiverData.id;
+      req.session.caregiver_id = caregiverData.caregiverid;
       req.session.logged_in = true;
 
       res.status(200).json(caregiverData);
@@ -24,7 +24,7 @@ router.post("/usersignup", async (req, res) => {
     const userData = await User.create(req.body);
 
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.user_id = userData.userid;
       req.session.logged_in = true;
 
       res.status(200).json(userData);
@@ -63,7 +63,7 @@ router.post("/cglogin", async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.caregiver_id = caregiverData.id;
+      req.session.caregiver_id = caregiverData.caregiverid;
       req.session.logged_in = true;
 
       return res.json({
@@ -105,7 +105,7 @@ router.post("/userlogin", async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.user_id = userData.userid;
       req.session.logged_in = true;
 
       return res.json({
