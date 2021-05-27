@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import AssessCard from "../components/AssessmentCard";
 import NavBar from "../components/NavBar";
 import AssessWrapper from "../components/AssessmentWrapper";
@@ -10,14 +10,10 @@ import yellow from "../assets/yellow.jpg";
 import purple from "../assets/purple.jpg";
 import green from "../assets/green.jpg";
 import black from "../assets/black.png";
-import Apiroutes from "../utils/Apiroutes"
+import Apiroutes from "../utils/Apiroutes";
 import "./style.css";
 
-
-
-const emneeds = ["Hungry", "Thirsty" ,"Restroom", "Happy","Sad","Nervous"]
-
-
+const emneeds = ["Hungry", "Thirsty", "Restroom", "Happy", "Sad", "Nervous"];
 
 function Assessment() {
   const [formObject, setFormObject] = useState({});
@@ -25,8 +21,6 @@ function Assessment() {
   const [emIndex, setEmIndex] = useState(0);
   const [emType, setEmType] = useState();
   const history = useHistory();
-  
-
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -34,22 +28,21 @@ function Assessment() {
     console.log(formObject);
   }
 
-  function onSave(event){
+  function onSave(event) {
     event.preventDefault();
 
-if (emIndex < (emneeds.length-1)) {
-  setEmIndex(emIndex+1)
-  //Save user response
-  Apiroutes.assessmentSave;
-  //set resCards to empty so cards revert to colors for next question
-  setResCards([]);
-} else {
-  history.push("/home")
-}
+    if (emIndex < emneeds.length - 1) {
+      setEmIndex(emIndex + 1);
+      //Save user response
+      Apiroutes.assessmentSave;
+      //set resCards to empty so cards revert to colors for next question
+      setResCards([]);
+    } else {
+      history.push("/home");
+    }
   }
 
   function handleFormSubmit(event) {
-
     event.preventDefault();
     SearchApi.GetImages(formObject.value)
 
@@ -58,12 +51,16 @@ if (emIndex < (emneeds.length-1)) {
       .catch((err) => console.log(err));
   }
 
-
   return (
     <div className="Container">
       <NavBar />
- 
-      <AssessWrapper onClick={onSave} onSearch={handleFormSubmit} onChange={handleInputChange} emotionNeeds={emneeds[emIndex]}>
+
+      <AssessWrapper
+        onClick={onSave}
+        onSearch={handleFormSubmit}
+        onChange={handleInputChange}
+        emotionNeeds={emneeds[emIndex]}
+      >
         {resCards.length ? (
           resCards.map((resCard) => (
             <div className="col imgcol">
@@ -84,21 +81,36 @@ if (emIndex < (emneeds.length-1)) {
               <AssessCard key={2} thumbnail={blue} onSave={onSave}></AssessCard>
             </div>
             <div className="col imgcol">
-              <AssessCard key={3} thumbnail={yellow} onSave={onSave}></AssessCard>
+              <AssessCard
+                key={3}
+                thumbnail={yellow}
+                onSave={onSave}
+              ></AssessCard>
             </div>
             <div className="col imgcol">
-              <AssessCard key={4} thumbnail={purple} onSave={onSave}></AssessCard>
+              <AssessCard
+                key={4}
+                thumbnail={purple}
+                onSave={onSave}
+              ></AssessCard>
             </div>
             <div className="col imgcol">
-              <AssessCard key={5} thumbnail={black} onSave={onSave}></AssessCard>
+              <AssessCard
+                key={5}
+                thumbnail={black}
+                onSave={onSave}
+              ></AssessCard>
             </div>
             <div className="col imgcol">
-              <AssessCard key={6} thumbnail={green} onSave={onSave}></AssessCard>
+              <AssessCard
+                key={6}
+                thumbnail={green}
+                onSave={onSave}
+              ></AssessCard>
             </div>
           </>
         )}
       </AssessWrapper>
-
     </div>
   );
 }
