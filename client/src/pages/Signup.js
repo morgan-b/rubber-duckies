@@ -42,7 +42,7 @@ const handleSubmit = (e) => {
     Apiroutes.userSignup(signupInfo)
     .then(res => {
       console.log("user signed in")
-      history.push("/assessment")
+      history.push("/welcomeuser")
     })
     .catch(err => console.log(err))
   }
