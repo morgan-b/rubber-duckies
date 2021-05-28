@@ -17,7 +17,7 @@ export default {
     return axios.post("api/users/cgsignup", cgData)
 },
 
-assessmentSave: function (userid, userChoice) {
-    return axios.put(`api/assess/${userid}`, userChoice)
+assessmentSave: function (userChoice) {
+    return axios.put(`api/assess`, userChoice)
 }
 }

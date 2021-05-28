@@ -24,14 +24,14 @@ function Assessment() {
   const history = useHistory();
 
   const [userChoice, setUserChoice] = useState({
-    hungry: '',
-    thirsty:'',
-    restroom:'',
-    happy:'',
-    sad:'',
-    nervous:''
+    hungry: "",
+    thirsty: "",
+    restroom: "",
+    happy: "",
+    sad: "",
+    nervous: "",
   });
-
+  // nervouse is not being added
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -40,25 +40,28 @@ function Assessment() {
   }
 
   function onSave(e, link) {
-    console.log("LINK:", link)
+    console.log("LINK:", link);
     e.preventDefault();
 
-    if (emIndex < emneeds.length - 1) {
-     setUserChoice({...userChoice,[emneeds[emIndex].toLowerCase()]: link})
-      setEmIndex(emIndex + 1);
 
+    if (emIndex < emneeds.length - 1) {
+      setEmIndex(emIndex + 1);
+      setUserChoice({ ...userChoice, [emneeds[emIndex].toLowerCase()]: link });
+
+      console.log(userChoice);
 
       //set resCards to empty so cards revert to colors for next question
       setResCards([]);
-    } else {
-      console.log(userChoice)
 
+    } else {
+
+      Apiroutes.assessmentSave(userChoice);
+      history.push("/home");
+      console.log(userChoice);
       //using placeholder integar to check that backend route working
       //need to figure out how to pass actual user id to backend
-      let userid = 2
+
       //Save user response
-      Apiroutes.assessmentSave(userid, userChoice);
-      history.push("/home");
     }
   }
 
@@ -96,24 +99,24 @@ function Assessment() {
         ) : (
           <>
             <div className="col imgcol">
-              <AssessCard 
-              link={"../assets/red.jpg"}
-              key={1} 
-              thumbnail={red} 
-              onSave={onSave}>
-
-              </AssessCard>
-            </div>
-            <div className="col imgcol">
-              <AssessCard 
-              link={"../assets/blue.png"}
-              key={2} 
-              thumbnail={blue} 
-              onSave={onSave}></AssessCard>
+              <AssessCard
+                link={"red"}
+                key={1}
+                thumbnail={red}
+                onSave={onSave}
+              ></AssessCard>
             </div>
             <div className="col imgcol">
               <AssessCard
-                link={"../assets/yellow.jpg"}
+                link={"blue"}
+                key={2}
+                thumbnail={blue}
+                onSave={onSave}
+              ></AssessCard>
+            </div>
+            <div className="col imgcol">
+              <AssessCard
+                link={"yellow"}
                 key={3}
                 thumbnail={yellow}
                 onSave={onSave}
@@ -121,7 +124,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
-              link={"../assets/purple.jpg"}
+                link={"purple"}
                 key={4}
                 thumbnail={purple}
                 onSave={onSave}
@@ -129,7 +132,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
-              link={"../assets/black.png"}
+                link={"black"}
                 key={5}
                 thumbnail={black}
                 onSave={onSave}
@@ -137,7 +140,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
-              link={"../assets/green.jpg"}
+                link={"green"}
                 key={6}
                 thumbnail={green}
                 onSave={onSave}

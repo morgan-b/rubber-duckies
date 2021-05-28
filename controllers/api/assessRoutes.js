@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-router.put("/:id",  async (req, res) => {
+router.put("/",  async (req, res) => {
     
   try {
     const userData = await User.update(
@@ -16,8 +16,7 @@ router.put("/:id",  async (req, res) => {
       },
       {
         where: {
-          userid: req.params.id,
-          
+          userid: req.session.user_id,
         },
       }
     );
