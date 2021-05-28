@@ -19,5 +19,13 @@ export default {
 
 assessmentSave: function (userChoice) {
     return axios.put(`api/assess`, userChoice)
+},
+
+checkUser: function (addUser) {
+    return axios.get("/", addUser)
+},
+
+addUser: function (addUser) {
+    return axios.put("api/adduser", addUser)
 }
 }
