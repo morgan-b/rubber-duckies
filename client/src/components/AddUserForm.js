@@ -9,21 +9,23 @@ function AddUserForm(props) {
                 <section className="mb-2">
                     <label className="form-label">User's username</label>
                     <input
+                       name="username"
                         value={props.username}
                         type="text"
-                        onChange={props.usernameChange}
+                        onChange={props.handleChange}
                         className="form-control"
                         id="username" />
                 </section>
 
                 <section className="mb-2">
-                    <label className="form-label">User's password</label>
+                    <label className="form-label">User's ID</label>
                     <input
-                        value={props.password}
-                        type="password"
-                        onChange={props.PassChange}
+                        name="userid"
+                        value={props.userid}
+                        type="text"
+                        onChange={props.handleChange}
                         className="form-control"
-                        id="user-password" />
+                        id="userid" />
                 </section>
                 
                 <button id="adduser" className="btn btn-dark localBtn m-3" onClick={props.handleAddUser}>Add User</button>
