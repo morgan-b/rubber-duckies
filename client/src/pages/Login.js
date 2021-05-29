@@ -54,7 +54,7 @@ else if (usertype === "caregiver") {
     })
     .then(res => {
         console.log("caregiver logged in");
-        history.push("/profile")
+        history.push({pathname:"/profile", state:{email}})
 
     })
     .catch(err => console.log(err))

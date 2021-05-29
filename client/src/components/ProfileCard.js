@@ -5,15 +5,15 @@ export default function ProfileCard(props) {
     <div className="card m-3 text-center">
   
           <h5 key={1 + props.id} className="card-title">
-            {/* {props.first_name} */} Name Placeholder
+            {props.firstname}
           </h5>
           <h5 key={2 + props.id} className="card-title">
-            {props.user_type}
+            {/*{props.user_type}*/}
           </h5>
           <p key={3 + props.id} className="card-text">
-            {props.description}
+            {props.lastname}
           </p>
-          <a
+          {/*<a
             className="btn btn-light homebtns"
             key={4 + props.id}
             href={props.link}
@@ -21,7 +21,7 @@ export default function ProfileCard(props) {
             rel="noreferrer"
           >
            Placeholder
-          </a>
+          </a>*/}
           </div>
  
       
