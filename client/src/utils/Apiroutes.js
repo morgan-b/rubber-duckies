@@ -27,5 +27,16 @@ checkUser: function (addUser) {
 
 addUser: function (addUser) {
     return axios.put("api/adduser", addUser)
-}
+},
+
+getCaregiver: function (email) {
+    return axios.get("/caregiver", email)
+ },
+ 
+populateProfile: function () {
+   return axios.get("/profile")
+},
+
+
+
 }
