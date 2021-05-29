@@ -38,9 +38,8 @@ FOREIGN KEY (caregiverid) REFERENCES CAREGIVER (caregiverid)
 
 CREATE TABLE USERACTIONDETAIL (
 
-UserActionDetailId INT NOT NULL AUTO_INCREMENT,
-UserEmotion VARCHAR(50) NULL,
-UserNeeds  VARCHAR(50) NULL,
+userActionDetailId INT NOT NULL AUTO_INCREMENT,
+userInput VARCHAR(50) NULL,
 createdDate date NOT NULL,
 userid INT NOT NULL,
 PRIMARY KEY (UserActionDetailId),

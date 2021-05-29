@@ -5,13 +5,13 @@ class Useractiondetail extends Model {}
 
 Useractiondetail.init(
   {
-    UserActionDetailId: {
+    userActionDetailId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    UserEmotion: {
+    userInput: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -30,6 +30,7 @@ Useractiondetail.init(
   },
   {
     sequelize,
+    timestamps:false,
     freezeTableName: true,
     modelName: "useractiondetail",
   }
