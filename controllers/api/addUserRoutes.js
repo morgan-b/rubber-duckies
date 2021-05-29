@@ -7,7 +7,7 @@ router.put("/",  async (req, res) => {
     try {
       const userData = await User.update(
         {
-          caregiverid:req.session.user_id
+          caregiverid:req.session.caregiver_id
         },
         {
           where: {
