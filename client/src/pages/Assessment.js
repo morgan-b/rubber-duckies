@@ -10,12 +10,18 @@ import yellow from "../assets/yellow.jpg";
 import purple from "../assets/purple.jpg";
 import green from "../assets/green.jpg";
 import black from "../assets/black.png";
+import Hungry from "../assets/Hungry.png"
+import Thirsty from "../assets/Thirsty.png"
+import Restroom from "../assets/Restroom.png"
+import Happy from "../assets/Happy.png"
+import Sad from "../assets/Sad.png"
+import Nervous from "../assets/Nervous.png"
 import Apiroutes from "../utils/Apiroutes";
 import "./style.css";
 
 //array to hold all wants and needs we need to loop through
 const emneeds = ["Hungry", "Thirsty", "Restroom", "Happy", "Sad", "Nervous"];
-
+const emImages = [Hungry, Thirsty, Restroom, Happy, Sad, Nervous]
 function Assessment() {
   const [formObject, setFormObject] = useState({});
   const [resCards, setResCards] = useState([]);
@@ -54,7 +60,7 @@ function Assessment() {
       setResCards([]);
 
     } else {
-
+   
       Apiroutes.assessmentSave(userChoice);
       history.push("/home");
       console.log(userChoice);
@@ -77,12 +83,21 @@ function Assessment() {
   return (
     <div className="Container">
       <NavBar />
-
+  
+        
+       
       <AssessWrapper
         onSearch={handleFormSubmit}
         onChange={handleInputChange}
         emotionNeeds={emneeds[emIndex]}
+        onSave={onSave}
+        link={emImages[emIndex]}
+  
+      
       >
+       
+     
+      
         {resCards.length ? (
           resCards.map((resCard) => (
             <div className="col imgcol">
@@ -100,7 +115,7 @@ function Assessment() {
           <>
             <div className="col imgcol">
               <AssessCard
-                link={"red"}
+                link={red}
                 key={1}
                 thumbnail={red}
                 onSave={onSave}
@@ -108,7 +123,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
-                link={"blue"}
+                link={blue}
                 key={2}
                 thumbnail={blue}
                 onSave={onSave}
@@ -116,7 +131,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
-                link={"yellow"}
+                link={yellow}
                 key={3}
                 thumbnail={yellow}
                 onSave={onSave}
@@ -124,7 +139,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
-                link={"purple"}
+                link={purple}
                 key={4}
                 thumbnail={purple}
                 onSave={onSave}
@@ -148,8 +163,14 @@ function Assessment() {
             </div>
           </>
         )}
+     
       </AssessWrapper>
+    
     </div>
+   
+  
   );
+        
 }
+
 export default Assessment;

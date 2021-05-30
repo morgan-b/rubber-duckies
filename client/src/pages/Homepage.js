@@ -10,7 +10,7 @@ import yellow from "../assets/yellow.jpg";
 import purple from "../assets/purple.jpg";
 import green from "../assets/green.jpg";
 import black from "../assets/black.png";
-
+import Happy from "../assets/Happy.png"
 
 
 function onClick(e, title, thumbnail){
@@ -37,13 +37,16 @@ const getUserEmotions = () => {
   Apiroutes.getUserData()
   .then (res => {
     console.log(res.data)
+    
     setUser(res.data)
     })
      
     .catch(err => console.log(err))
 }
 
+
   return (
+    
     <>
     <NavBar/>
       <div className="container">
@@ -54,6 +57,9 @@ const getUserEmotions = () => {
           id={user.userid +1}
           title={"Happy"}
           onClick={onClick}
+         
+      
+          
           thumbnail={user.happy}
           />
         </div>
@@ -110,4 +116,6 @@ const getUserEmotions = () => {
     </>
   );
 }
+
+
 export default Homepage;
