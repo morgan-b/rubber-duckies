@@ -7,13 +7,14 @@ import Login from "./pages/Login";
 import Assessment from "./pages/Assessment";
 import AddUser from "./pages/AddUser";
 import WelcomeUser from "./pages/WelcomeUser";
+import UserDetails from "./pages/userDetails";
 
 function App() {
   return (
     <Router>
       <div>
         <Switch>
-          <Route exact path={["/", "/home"]}>
+          <Route exact path={"/home"}>
             <Homepage />
           </Route>
           <Route exact path={"/profile"}>
@@ -22,7 +23,7 @@ function App() {
           <Route exact path={"/signup"}>
             <Signup />
           </Route>
-          <Route exact path={"/login"}>
+          <Route exact path={["/","/login"]}>
             <Login />
           </Route>
           <Route exact path={"/assessment"}>
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path={"/welcomeuser"}>
             <WelcomeUser />
+          </Route>
+          <Route exact path={"/userdetails"}>
+            < UserDetails/>
           </Route>
         </Switch>
       </div>

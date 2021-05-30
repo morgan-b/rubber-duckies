@@ -26,3 +26,15 @@
 
 }
 
+.profileCard {
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   transition: transform 250ms;
+
+}
+
+.profileCard:hover {
+   transform: translateY(-10px);
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
