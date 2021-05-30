@@ -8,27 +8,32 @@ import "./style.css";
 import Apiroutes from "../utils/Apiroutes";
 
 
+
 function Profile() {
 const [users, setUsers] = useState([])
 const [caregiver, setCaregiver] = useState([])
 
 const {state} =useLocation()
+console.log(state)
 
 useEffect(() => {
-    const email = state;
-        console.log(email)
 
-    Apiroutes.getCaregiver(email)
+getCaregiver(state)
+
+   
+}, []);
+
+
+function getCaregiver(state) { 
+    console.log(state)
+    Apiroutes.getCaregiver(state)
     .then (res => {
     console.log(res.data)
     setCaregiver(res.data)
     console.log("CAREGIVER",caregiver)
     })
      
-    .catch(err => console.log(err))
-}, []);
-
-
+    .catch(err => console.log(err))}
 
 const getData = () => {
     Apiroutes.populateProfile()
