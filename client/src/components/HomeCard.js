@@ -16,7 +16,7 @@ function HomeCard(props) {
           key={5 + props.id}
           alt={props.title}
           className="card-img"
-          src={placeholder}
+          src={props.thumbnail}
           //   {props.imageLink}
           ></img>
           </a>

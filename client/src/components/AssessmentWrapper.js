@@ -10,7 +10,7 @@ function AssessWrapper(props) {
         <div className="row g-3 justify-content-end">
           <div className="col-8">
             <p>
-              Choose color below, use text: <button className="btn btn-dark btn-sm localBtn" onClick={props.onClick}>
+              Choose color below, use text: <button link={props.link} onClick={(e) => props.onSave(e, props.link)} className="btn btn-dark btn-sm localBtn">
               {props.emotionNeeds}</button> or search for an image
             </p>
           </div>
