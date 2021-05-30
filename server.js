@@ -33,11 +33,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Send every request to the React app
 // Define any API routes before this runs
+app.use(routes);
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.use(routes);
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));

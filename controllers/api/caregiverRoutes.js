@@ -1,13 +1,13 @@
 const router = require("express").Router();
-const { Caregiver } = require("../models");
+const { Caregiver } = require("../../models");
 
 router.get("/", async (req,res) => {
-  console.log(req.body)
+  console.log(req.body.email)
     try {
       const cgData = await Caregiver.findOne({
         where: { 
-          email : req.body.email,
-          caregiverid: req.session.caregiver_id
+          email: req.body.email,
+          // caregiverid: req.session.caregiver_id
          },
       });
   
