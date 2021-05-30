@@ -29,13 +29,17 @@ addUser: function (addUser) {
     return axios.put("api/adduser", addUser)
 },
 
-getCaregiver: function (state) {
-    return axios.get("api/caregiver", state)
+getCaregiver: function () {
+    return axios.get("api/caregiver")
  },
  
 populateProfile: function () {
    return axios.get("/profile")
 },
+
+getUserData: function () {
+    return axios.get("/useremotions")
+}
 
 
 

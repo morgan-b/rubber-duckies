@@ -3,21 +3,20 @@ import placeholder from "../assets/blue.png";
 
 
 
+
 function HomeCard(props) {
   return (
-    <div className="card text-center">
-      <p key={1 + props.id} className="card-header">
-        Placeholder Feeling/Action {props.title}
+    <div key={props.id} className="card text-center assessCard">
+      <p className="card-header">
+        {props.title}
       </p>
 
 
-          <a className="btn btn-light" onClick={props.onClick}>
+          <a className="btn btn-light card-img" onClick={(e) => props.onClick(e, props.title, props.thumbnail)}>
           <img
-          key={5 + props.id}
           alt={props.title}
           className="card-img"
           src={props.thumbnail}
-          //   {props.imageLink}
           ></img>
           </a>
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {useLocation} from 'react-router-dom';
 import NavBar from "../components/NavBar";
 import Notifications from "../components/Notifications";
 import ProfileCard from "../components/ProfileCard";
@@ -13,24 +12,20 @@ function Profile() {
 const [users, setUsers] = useState([])
 const [caregiver, setCaregiver] = useState([])
 
-const {state} =useLocation()
-console.log(state)
 
 useEffect(() => {
 
-getCaregiver(state)
-
+getCaregiver()
+getData()
    
 }, []);
 
 
-function getCaregiver(state) { 
-    console.log(state)
-    Apiroutes.getCaregiver(state)
+function getCaregiver() { 
+    Apiroutes.getCaregiver()
     .then (res => {
     console.log(res.data)
     setCaregiver(res.data)
-    console.log("CAREGIVER",caregiver)
     })
      
     .catch(err => console.log(err))}
@@ -53,12 +48,20 @@ return (
 <div className="row">
     <div className="row-col-1 col-md-6 col-lg-6">
 
-        {users.map(user => (
+        {users.length ?(
+        users.map(user => (
             <ProfileCard
+            id={user.userid}
             firstname={user.firstname}
             lastname={user.lastname}
             />
-        ))}
+        ))) : (
+            <ProfileCard
+            id={1}
+            firstname={"Please add users from the button above"}
+            />
+        )
+    }
     
 
     </div>

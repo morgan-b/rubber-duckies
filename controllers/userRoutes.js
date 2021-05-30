@@ -47,5 +47,27 @@ router.get("/profile", async (req,res) => {
     }
   })
 
+router.get("/useremotions", async (req,res) => {
+    try {
+      const userData = await User.findOne({
+        where: { 
+          userid: req.session.user_id,
+         },
+      });
+  
+      if (!userData) {
+        res
+          .status(400)
+          .json({ message: "User not found please try again" });
+        return;
+      }
+  
+      return res.status(200).json(userData);
+      
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  })
+
   module.exports=router;
   
