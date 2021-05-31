@@ -43,6 +43,10 @@ getUserData: function () {
 
 saveUserAction: function (userinput) {
     return axios.post("api/useraction", userinput)
+},
+
+userDetails: function (id) {
+    return axios.get("api/useraction/find", id)
 }
 
 
