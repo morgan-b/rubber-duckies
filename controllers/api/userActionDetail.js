@@ -1,17 +1,14 @@
 const router = require("express").Router();
-const { UserActionDetail } = require("../../models");
+const { Useractiondetail } = require("../../models");
 
 router.post("/", async (req, res) => {
-
+console.log(req.body.userinput)
+console.log(req.session.user_id)
     try {
-        const userActionData = await UserActionDetail.create(
+        const userActionData = await Useractiondetail.create(
             {
-                userInput: req.body.userinput
-            },
-            {
-                where: {
-                    userid: req.session.user_id,
-                },
+                userInput: req.body.userinput,
+                userid: req.session.user_id
             }
         );
 
