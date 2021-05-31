@@ -15,10 +15,6 @@ Useractiondetail.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    createdDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
     userid: {
       type: DataTypes.INTEGER,
       references: {
@@ -30,7 +26,7 @@ Useractiondetail.init(
   },
   {
     sequelize,
-    timestamps:false,
+    timestamps: true,
     freezeTableName: true,
     modelName: "useractiondetail",
   }
