@@ -152,7 +152,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
-                link={"black"}
+                link={black}
                 key={5}
                 thumbnail={black}
                 onSave={onSave}
@@ -160,7 +160,7 @@ function Assessment() {
             </div>
             <div className="col imgcol">
               <AssessCard
-                link={"green"}
+                link={green}
                 key={6}
                 thumbnail={green}
                 onSave={onSave}
