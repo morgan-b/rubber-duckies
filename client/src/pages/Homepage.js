@@ -10,21 +10,33 @@ import yellow from "../assets/yellow.jpg";
 import purple from "../assets/purple.jpg";
 import green from "../assets/green.jpg";
 import black from "../assets/black.png";
-import Happy from "../assets/Happy.png"
+import Happy from "../assets/Happy.png";
 
 
 function onClick(e, title, thumbnail){
-  let heading= title;
+  let userinput= title;
   let image = thumbnail;
+  console.log(userinput)
+ 
+  Apiroutes.saveUserAction ({userinput})
+  .then (res => {
+    console.log("action saved!")
+    
+    })
+    .catch(err => console.log(err))
+
+
     popupS.modal({
-        title:   heading,
+        title:   userinput,
         content: {
-            tag: heading,
+            tag: userinput,
             src: image
             // props.communication_image
         }
     });
 }
+
+
 function Homepage() {
 
 const [user, setUser]= useState([])

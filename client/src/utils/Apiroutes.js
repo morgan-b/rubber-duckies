@@ -39,6 +39,10 @@ populateProfile: function () {
 
 getUserData: function () {
     return axios.get("/useremotions")
+},
+
+saveUserAction: function (userinput) {
+    return axios.post("api/useraction", userinput)
 }
 
 

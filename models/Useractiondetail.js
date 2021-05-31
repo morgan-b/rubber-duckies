@@ -23,7 +23,7 @@ Useractiondetail.init(
       type: DataTypes.INTEGER,
       references: {
         model: "user",
-        key: "Userid",
+        key: "userid",
         unique: false,
       },
     },
