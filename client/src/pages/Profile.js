@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {useHistory} from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Notifications from "../components/Notifications";
 import ProfileCard from "../components/ProfileCard";
@@ -11,6 +12,8 @@ import Apiroutes from "../utils/Apiroutes";
 function Profile() {
 const [users, setUsers] = useState([])
 const [caregiver, setCaregiver] = useState([])
+
+const history = useHistory();
 
 
 useEffect(() => {
@@ -37,6 +40,12 @@ const getData = () => {
     .catch(err => console.log(err));
 }
 
+const handleClick = (e, user) => {
+  e.preventDefault()
+  history.push({pathname:"/userdetails", state:user})
+
+}
+
 
 return (
     <>
@@ -51,6 +60,8 @@ return (
         {users.length ?(
         users.map(user => (
             <ProfileCard
+            user= {user}
+            handleClick={handleClick}
             id={user.userid}
             firstname={user.firstname}
             lastname={user.lastname}
