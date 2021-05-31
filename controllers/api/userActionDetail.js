@@ -22,9 +22,10 @@ router.get("/find", async (req,res) => {
     console.log("REQ.BODY: ",req.body)
     try {
         const actionData = await Useractiondetail.findAll({
-          where: { 
-            userid: req.body
-           },
+
+            userid: req.body,
+
+
         });
     
         if (!actionData) {

@@ -47,6 +47,10 @@ saveUserAction: function (userinput) {
 
 userDetails: function (id) {
     return axios.get("api/useraction/find", id)
+},
+
+logOut:  function (id) {
+    return axios.get("api/useraction/find", id)
 }
 
 

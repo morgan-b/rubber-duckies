@@ -13,20 +13,22 @@ const [actions, setActions] = useState([]);
 const {state} = useLocation()
 useEffect(() => {
   setUserData(state)
- let id = state.userid
- console.log(id)
-  populateUserDetails(id)
+ let userid = state.userid
+ console.log(userid)
+  populateUserDetails(userid)
 
 }, [])
 
 
-const populateUserDetails = (id) => {
-console.log(id)
-  Apiroutes.userDetails({id})
+const populateUserDetails = (userid) => {
+console.log(userid)
+  Apiroutes.userDetails({userid})
   .then (res => {
     setActions(res.data)
     console.log("user found!")
-    console.log(res.data)})
+    console.log(res)
+    console.log(actions)})
+    
 .catch(err => console.log(err));
 }
 
@@ -57,13 +59,23 @@ console.log(id)
   </thead>
 
   <tbody>
-    
+  {actions.length ? (
+    actions.map((action) =>(
+
+   
     <tr>
-      <th scope="row">1</th>
-      <td>placeholder</td>
-      <td>placeholder</td>
+      <th scope="row">{action.userActionDetailId}</th>
+      <td> {action.userInput}</td>
+      <td>{action.date_created}</td>
     </tr>
-      
+       ))) :(
+        <tr>
+        <th scope="row">1</th>
+        <td> awaiting new action</td>
+        <td> awaiting new action</td>
+      </tr>
+       )
+      }
   </tbody>
 </table>        
 

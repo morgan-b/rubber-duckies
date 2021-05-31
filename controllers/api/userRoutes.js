@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Caregiver, User } = require("../../models");
 const bcrypt = require("bcrypt");
 
+
 // caregiver signup
 router.post("/cgsignup", async (req, res) => {
   try {
@@ -117,6 +118,16 @@ router.post("/userlogin", async (req, res) => {
     });
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 
