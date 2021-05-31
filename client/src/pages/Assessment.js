@@ -47,12 +47,17 @@ function Assessment() {
 
   function onSave(e, link) {
     console.log("LINK:", link);
+    let choices = userChoice
     e.preventDefault();
+
+
+    choices[emneeds[emIndex].toLowerCase()] = link
+
+    setUserChoice(choices);
 
 
     if (emIndex < emneeds.length - 1) {
       setEmIndex(emIndex + 1);
-      setUserChoice({ ...userChoice, [emneeds[emIndex].toLowerCase()]: link });
 
       console.log(userChoice);
 
