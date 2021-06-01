@@ -30,7 +30,7 @@ useEffect(() => {
 const populateUserDetails = (userid) => {
 
 
-  Apiroutes.userDetails({userid})
+  Apiroutes.userDetails(userid)
 
   .then (res => {
     setActions(res.data)

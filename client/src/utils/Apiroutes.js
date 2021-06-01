@@ -46,8 +46,7 @@ saveUserAction: function (userinput) {
 },
 
 userDetails: function (userid) {
-
-    return axios.get("api/useraction/find", userid)
+    return axios.get(`api/useraction/find/${userid}`)
 },
 
 // logOut:  function (id) {

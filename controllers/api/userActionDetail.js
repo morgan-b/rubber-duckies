@@ -18,12 +18,12 @@ console.log(req.session.user_id)
     }
 });
 
-router.get("/find", async (req,res) => {
-
+router.get("/find/:userid", async (req,res) => {
+console.log(req.params.userid)
     try {
 
         const actionData = await Useractiondetail.findAll({
-          where:{ userid:req.body}
+          where:{ userid:req.params.userid}
         }
         );
     
