@@ -33,9 +33,11 @@ useEffect(() => {
 
 const populateUserDetails = (userid) => {
 
-  console.log({userid})
- 
-  Apiroutes.userDetails({userid})
+
+
+  Apiroutes.userDetails(userid)
+
+
   .then (res => {
    console.log("user found!")
 
