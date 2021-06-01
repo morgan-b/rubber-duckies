@@ -43,6 +43,8 @@ const handleLogin = (e) => {
     })
     .then(res => {
     console.log("user logged in");
+    localStorage.clear()
+    localStorage.setItem('user', true)
     history.push("/home")
     })
     .catch(err => console.log(err))
@@ -54,6 +56,8 @@ else if (usertype === "caregiver") {
     })
     .then(res => {
         console.log("caregiver logged in");
+        localStorage.clear()
+        localStorage.setItem('caregiver',true)
         history.push("/profile")
 
     })

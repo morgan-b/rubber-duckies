@@ -18,6 +18,7 @@ console.log(req.session.user_id)
     }
 });
 
+
 router.get("/find/:userid", async (req,res) => {
 console.log(req.params.userid)
     try {
@@ -40,5 +41,6 @@ console.log(req.params.userid)
         res.status(400).json(err);
       }
 })
+
 
 module.exports = router;
