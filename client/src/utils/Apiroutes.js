@@ -45,13 +45,14 @@ saveUserAction: function (userinput) {
     return axios.post("api/useraction", userinput)
 },
 
-userDetails: function (id) {
-    return axios.get("api/useraction/find", id)
+userDetails: function (userid) {
+
+    return axios.get("api/useraction/find", userid)
 },
 
-logOut:  function (id) {
-    return axios.get("api/useraction/find", id)
-}
+// logOut:  function (id) {
+//     return axios.get("api/useraction/find", id)
+// }
 
 
 

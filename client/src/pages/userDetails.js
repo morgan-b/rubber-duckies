@@ -1,12 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Component} from 'react';
 import {useLocation} from 'react-router-dom';
 import NavBar from "../components/NavBar"
 import logo from "../assets/logo-duckies.png"
 import Apiroutes from '../utils/Apiroutes';
+import BarChart from "../components/UserChart"
+
+
+
 
 function userDetails() {
 const [userData, setUserData] = useState([]);
 const [actions, setActions] = useState([]);
+const [timeStamp, setTimeStamp] = useState([]);
+
+
 
 //uselocation hook to get data from one page to the next. 
 //used this to pass on user data depending on which user is clicked on
@@ -21,18 +28,19 @@ useEffect(() => {
 
 
 const populateUserDetails = (userid) => {
-console.log(userid)
+
+
   Apiroutes.userDetails({userid})
+
   .then (res => {
     setActions(res.data)
     console.log("user found!")
-    console.log(res)
-    console.log(actions)})
+    console.log(res.data)
+
+  })
     
 .catch(err => console.log(err));
 }
-
-
 
 
 
@@ -46,6 +54,8 @@ console.log(userid)
       <p className="lead mb-4">View reports below</p>
     </div>
   </div>  
+
+<BarChart actions={actions}></BarChart>
 
       <div className="container">
 
@@ -61,6 +71,7 @@ console.log(userid)
   <tbody>
   {actions.length ? (
     actions.map((action) =>(
+
 
    
     <tr>

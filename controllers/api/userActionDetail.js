@@ -19,14 +19,13 @@ console.log(req.session.user_id)
 });
 
 router.get("/find", async (req,res) => {
-    console.log("REQ.BODY: ",req.body)
+
     try {
+
         const actionData = await Useractiondetail.findAll({
-
-            userid: req.body,
-
-
-        });
+          where:{ userid:req.body}
+        }
+        );
     
         if (!actionData) {
           res
