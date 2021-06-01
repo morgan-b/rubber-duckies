@@ -50,15 +50,16 @@ const handleClick = (e, user) => {
 return (
     <>
     <NavBar/>
-<div className="Container">
+<div className="Container m-4">
 
 <ProfileWelcome name={caregiver.firstname}/>
 
-<div className="row">
-    <div className="row-col-1 col-md-6 col-lg-6">
+<div className="row text-center justify-content-center">
+    <div className="row row-cols-1 row-cols-md-3 g-3 row-cols-lg-3 justify-content-center">
 
         {users.length ?(
         users.map(user => (
+            <div clasName="col">
             <ProfileCard
             user= {user}
             handleClick={handleClick}
@@ -66,6 +67,7 @@ return (
             firstname={user.firstname}
             lastname={user.lastname}
             />
+            </div>
         ))) : (
             <ProfileCard
             id={1}
@@ -77,13 +79,13 @@ return (
 
     </div>
 
-    <div className="row-col-1 col-md-6 col-lg-6">
+    {/*<div className="row-col-1 col-md-6 col-lg-6">
         <div className="card text-center m-3">
     <h5 className="card-title">Daily Notifications</h5>
         <Notifications notification={"placeholder text"}/>
         <Notifications notification={"each card will hold 1 notification"}/>
      </div>
-    </div>
+    </div>*/}
 </div>
 </div>
 </>

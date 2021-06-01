@@ -1,10 +1,26 @@
+import session from 'express-session';
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import logo from "../assets/logo-duckies.png";
+import Apiroutes from "../utils/Apiroutes";
 
 
 
 function NavBar() {
+
+const history = useHistory()
+
+const handleLogout = () => {
+Apiroutes.logOut()
+.then (res => {
+    console.log("logged out")
+    localStorage.clear()
+    history.push("/login")
+}
+    )
+}
+
+
     return (
 
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -14,10 +30,10 @@ function NavBar() {
                 <span className="navbar-toggler-icon"></span>
               </button>
               <div className="collapse navbar-collapse justify-content-end" id="navbarNavLinks">
-                    <div className="navbar-nav">
-                        <Link className="nav-link" to="/login">Login</Link>
+                        <div className="navbar-nav">  
                         <Link className="nav-link" to="/profile">Profile</Link>
                         <Link className="nav-link" to="/home">Dashboard</Link>
+                        <div className="nav-link logoutBtn" onClick={handleLogout}>Logout</div>
                     </div>
               </div>
             </div>

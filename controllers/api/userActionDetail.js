@@ -18,27 +18,5 @@ console.log(req.session.user_id)
     }
 });
 
-router.get("/find", async (req,res) => {
-
-    try {
-
-        const actionData = await Useractiondetail.findAll({
-          where:{ userid:req.body}
-        }
-        );
-    
-        if (!actionData) {
-          res
-            .status(500)
-            .json({ message: "User not found please try again" });
-          return;
-        }
-    
-      return res.status(200).json(actionData);
-        
-      } catch (err) {
-        res.status(400).json(err);
-      }
-})
 
 module.exports = router;

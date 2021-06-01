@@ -18,10 +18,14 @@ const [timeStamp, setTimeStamp] = useState([]);
 //uselocation hook to get data from one page to the next. 
 //used this to pass on user data depending on which user is clicked on
 const {state} = useLocation()
+
+console.log(state)
+
 useEffect(() => {
   setUserData(state)
  let userid = state.userid
  console.log(userid)
+
   populateUserDetails(userid)
 
 }, [])
@@ -29,12 +33,13 @@ useEffect(() => {
 
 const populateUserDetails = (userid) => {
 
-
+  console.log({userid})
+ 
   Apiroutes.userDetails({userid})
-
   .then (res => {
+   console.log("user found!")
+
     setActions(res.data)
-    console.log("user found!")
     console.log(res.data)
 
   })
