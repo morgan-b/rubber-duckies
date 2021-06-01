@@ -4,6 +4,7 @@ import popupS from "popups";
 import placeholder from "../assets/blue.png";
 import NavBar from "../components/NavBar";
 import Apiroutes from "../utils/Apiroutes";
+
 import red from "../assets/red.jpg";
 import blue from "../assets/blue.png";
 import yellow from "../assets/yellow.jpg";
@@ -29,7 +30,7 @@ function onClick(e, title, thumbnail){
     popupS.modal({
         title:   userinput,
         content: {
-            tag: userinput,
+            tag: "img",
             src: image
             // props.communication_image
         }

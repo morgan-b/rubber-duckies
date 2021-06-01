@@ -17,8 +17,8 @@ if (process.env.NODE_ENV === "production") {
 const sess = {
   secret: "Super secret secret",
   cookie: {
-    // Session expiration is set to 5 minutes
-    expires: 5 * 60 * 1000,
+    // Session expiration is set to 60 minutes
+    expires: 60 * 60 * 1000,
   },
   resave: false,
   saveUninitialized: true,
