@@ -42,6 +42,8 @@ const handleSubmit = (e) => {
     Apiroutes.userSignup(signupInfo)
     .then(res => {
       console.log("user signed in")
+      localStorage.clear()
+      localStorage.setItem('user', true)
       history.push("/welcomeuser")
     })
     .catch(err => console.log(err))
@@ -50,7 +52,8 @@ const handleSubmit = (e) => {
     Apiroutes.cgSignup(signupInfo)
     .then(res => {
       console.log("caregiver signed in")
-      //placeholder, this should divery new caregivers to page where they add their users
+      localStorage.clear()
+      localStorage.setItem('caregiver', true)
       history.push("/profile")
     })
     .catch(err => console.log(err))

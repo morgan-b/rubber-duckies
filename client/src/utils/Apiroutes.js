@@ -47,12 +47,16 @@ saveUserAction: function (userinput) {
 
 userDetails: function (userid) {
 
-    return axios.get("api/useraction/find", userid)
+    return axios.get("/userdetails", userid)
 },
 
-// logOut:  function (id) {
-//     return axios.get("api/useraction/find", id)
-// }
+getAuth: function () {
+    return axios.get("/api/users/getauth")
+},
+
+ logOut:  function () {
+     return axios.post("api/users/logout")
+ }
 
 
 
