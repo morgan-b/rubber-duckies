@@ -44,7 +44,17 @@ const handleSubmit = (e) => {
       console.log("user signed in")
       localStorage.clear()
       localStorage.setItem('user', true)
-      history.push("/welcomeuser")
+    })
+    .then (res => {
+      if(localStorage.getItem("user") === true) {
+        history.push("/welcomeuser")
+            }
+            else {
+                setTimeout(() => {
+                    history.push("/welcomeuser")
+                    window.location.reload()
+                }, 2000)
+            }
     })
     .catch(err => console.log(err))
   }
@@ -54,8 +64,18 @@ const handleSubmit = (e) => {
       console.log("caregiver signed in")
       localStorage.clear()
       localStorage.setItem('caregiver', true)
-      history.push("/profile")
     })
+      .then (res => {
+        if(localStorage.getItem("caregiver") === true) {
+          history.push("/profile")
+              }
+              else {
+                  setTimeout(() => {
+                      history.push("/profile")
+                      window.location.reload()
+                  }, 2000)
+              }
+      })
     .catch(err => console.log(err))
   }
 }

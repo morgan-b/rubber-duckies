@@ -42,3 +42,10 @@
    cursor: pointer;
 }
 
+.piechart{
+   transition: transform 250ms;
+
+}
+.piechart:hover{
+   transform: translateY(-10px);
+}
