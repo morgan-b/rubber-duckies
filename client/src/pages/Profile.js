@@ -61,6 +61,7 @@ return (
         users.map(user => (
             <div className="col">
             <ProfileCard
+            id={user.id}
             user= {user}
             handleClick={handleClick}
             id={user.userid}
