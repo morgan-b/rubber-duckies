@@ -11,7 +11,8 @@ import BarChart from "../components/UserChart"
 function userDetails() {
 const [userData, setUserData] = useState([]);
 const [actions, setActions] = useState([]);
-const [timeStamp, setTimeStamp] = useState([]);
+const [timeStamp, setTimeStamps] = useState([]);
+
 
 
 
@@ -27,6 +28,7 @@ useEffect(() => {
  console.log(userid)
 
   populateUserDetails(userid)
+  
 
 }, [])
 
@@ -42,9 +44,14 @@ const populateUserDetails = (userid) => {
    console.log("user found!")
 
     setActions(res.data)
-    console.log(res.data)
+    setTimeStamps(res.data)
 
+    
+    console.log(res.data)
+   
   })
+ 
+  
     
 .catch(err => console.log(err));
 }
@@ -62,16 +69,22 @@ const populateUserDetails = (userid) => {
     </div>
   </div>  
 
-<BarChart actions={actions}></BarChart>
+
+
+
+<BarChart  data={timeStamp}>
+
+</BarChart>
+
+
 
       <div className="container">
 
       <table className="table table-striped">
   <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Needs</th>
-      <th scope="col">Date/Time</th>
+    <tr key="8">
+      <th key="6"scope="col">Needs</th>
+      <th key="7"scope="col">Date/Time</th>
     </tr>
   </thead>
 
@@ -81,16 +94,15 @@ const populateUserDetails = (userid) => {
 
 
    
-    <tr>
-      <th scope="row">{action.userActionDetailId}</th>
-      <td> {action.userInput}</td>
-      <td>{action.date_created}</td>
+    <tr key={action.userActionDetailId+3}>
+      <td key={action.userActionDetailId+1}>  {action.userInput}</td>
+      <td key={action.userActionDetailId+2}>{new Date(action.date_created).toString()}</td>
     </tr>
        ))) :(
         <tr>
-        <th scope="row">1</th>
-        <td> awaiting new action</td>
-        <td> awaiting new action</td>
+        <th key="1" scope="row">1</th>
+        <td key="2"> awaiting new action</td>
+        <td key="3" > awaiting new action</td>
       </tr>
        )
       }
