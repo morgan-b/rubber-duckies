@@ -49,4 +49,11 @@
 
 .subtext{
    font-size: calc(1.13rem + .1vw)!important;
+
+}
+
+.userHeader{
+   margin:2%!important;
+   padding:2%!important;
+
 }
