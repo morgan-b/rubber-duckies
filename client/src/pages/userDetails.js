@@ -96,7 +96,7 @@ const pieChart2 = () => {
   return (
     <>
       <NavBar />
-      <div className="px-4 py-5 my-5 text-center">
+      <div className="px-4 py-5 my-5 text-center userHeader">
         <img
           className="d-block mx-auto mb-4"
           src={logo}
@@ -157,7 +157,9 @@ const pieChart2 = () => {
          <>
         <div className="row">
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2">
+            
             <div className="col">
+            <div className="d-flex justify-content-center">
               <RadialChart
                 data={pieChart()}
                 width={300}
@@ -166,7 +168,10 @@ const pieChart2 = () => {
                 labelsAboveChildren={true}
               />
             </div>
+            </div>
+            
             <div className="col">
+            <div className="d-flex justify-content-center">
               <RadialChart
                 data={pieChart2()}
                 width={300}
@@ -177,7 +182,7 @@ const pieChart2 = () => {
             </div>
           </div>
         </div>
-
+        </div>
         <BarChart data={timeStamp}></BarChart>
         </>
         ):(
