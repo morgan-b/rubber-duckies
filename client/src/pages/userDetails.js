@@ -4,8 +4,8 @@ import NavBar from "../components/NavBar";
 import logo from "../assets/logo-duckies.png";
 import Apiroutes from "../utils/Apiroutes";
 import BarChart from "../components/UserChart";
-//import RadialChart from "../components/RadialChart";
 import { RadialChart } from "react-vis";
+import "./style.css"
 
 function userDetails() {
   const [userData, setUserData] = useState([]);
@@ -61,9 +61,9 @@ function userDetails() {
     console.log(emData);
 
     return [
-      { angle: emData.happy, label: "Happy" },
-      { angle: emData.sad, label: "Sad" },
-      { angle: emData.nervous, label: "Nervous" },
+      { angle: emData.happy, label: "Happy", className:"piechart" },
+      { angle: emData.sad, label: "Sad", className:"piechart"},
+      { angle: emData.nervous, label: "Nervous", className:"piechart" },
     ];
   };
 
@@ -87,9 +87,9 @@ const pieChart2 = () => {
   console.log(needsData);
 
   return [
-    { angle: needsData.restroom, label: "Restroom" },
-    { angle: needsData.thirsty, label: "Thirsty" },
-    { angle: needsData.hungry, label: "Hungry" },
+    { angle: needsData.restroom, label: "Restroom", className:"piechart" },
+    { angle: needsData.thirsty, label: "Thirsty", className:"piechart" },
+    { angle: needsData.hungry, label: "Hungry", className:"piechart" },
   ];
 };
 
@@ -145,9 +145,6 @@ const pieChart2 = () => {
               ))
             ) : (
               <tr>
-                <th key="1" scope="row">
-                  1
-                </th>
                 <td key="2"> awaiting new action</td>
                 <td key="3"> awaiting new action</td>
                 <td key="4"> awaiting new action</td>
@@ -156,6 +153,8 @@ const pieChart2 = () => {
           </tbody>
         </table>
 
+       {actions.length ? (
+         <>
         <div className="row">
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2">
             
@@ -185,6 +184,10 @@ const pieChart2 = () => {
         </div>
         </div>
         <BarChart data={timeStamp}></BarChart>
+        </>
+        ):(
+          <h4>{userData.firstname} has no actions to display yet!</h4>
+        )}
       </div>
     </>
   );

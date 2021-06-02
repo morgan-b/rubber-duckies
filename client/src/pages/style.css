@@ -43,12 +43,22 @@
 }
 
 
+.piechart{
+   transition: transform 250ms;
+
+}
+.piechart:hover{
+   transform: translateY(-10px);
+}
+
+
 .error{
    color:red
 }
 
 .subtext{
    font-size: calc(1.13rem + .1vw)!important;
+
 
 }
 
@@ -57,3 +67,4 @@
    padding:2%!important;
 
 }
+
