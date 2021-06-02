@@ -71,6 +71,7 @@ export default class BarChart extends PureComponent {
           className="bar"
           data={CHART_DATA}
           ref={this.getRef}
+          s
         ></BillboardChart>
       </>
     );
