@@ -13,7 +13,7 @@ export default class BarChart extends PureComponent {
   getRef = (ChartInstance) => {
     
     this.chartInstance = ChartInstance;
-    this.chartInstance.destroyChart();
+
     console.log(ChartInstance);
   };
 
