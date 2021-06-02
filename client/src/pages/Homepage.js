@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react";
 import HomeCard from "../components/HomeCard";
 import popupS from "popups";
-import placeholder from "../assets/blue.png";
+
 import NavBar from "../components/NavBar";
 import Apiroutes from "../utils/Apiroutes";
 
-import red from "../assets/red.jpg";
-import blue from "../assets/blue.png";
-import yellow from "../assets/yellow.jpg";
-import purple from "../assets/purple.jpg";
-import green from "../assets/green.jpg";
-import black from "../assets/black.png";
-import Happy from "../assets/Happy.png";
 
 
 function onClick(e, title, thumbnail){
