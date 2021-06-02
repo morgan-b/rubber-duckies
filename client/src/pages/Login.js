@@ -42,38 +42,64 @@ function Login() {
     if (usertype === "user") {
       Apiroutes.userLogin({
         email: email,
-        password: password,
-      })
-        .then((res) => {
-          console.log("user logged in");
-          localStorage.clear();
-          localStorage.setItem("user", true);
-          history.push("/home");
-        })
-        .catch((err) => {
-          setError();
-          console.log(err);
-        });
-    } else if (usertype === "caregiver") {
-      Apiroutes.cgLogin({
-        email: email,
-        password: password,
-      })
-        .then((res) => {
-          console.log("caregiver logged in");
-          localStorage.clear();
-          localStorage.setItem("caregiver", true);
-          history.push("/profile");
-        })
-        .catch((err) => {
-          setError();
-          console.log(err);
-        });
-    }
-  };
+        password: password
+    })
+    .then(res => {
+    console.log("user logged in");
+    localStorage.clear()
+    localStorage.setItem('user', true)
+    })
+    .then (res => {
+    if(localStorage.getItem("user") === true) {
+            history.push("/home")
+                }
+                else {
+                    setTimeout(() => {
+                        history.push("/home")
+                        window.location.reload()
+                    }, 2000)
+                }
 
-  return (
-    <>
+    })
+   .catch((err) => {
+          setError();
+          console.log(err);
+        });
+}
+else if (usertype === "caregiver") {
+    Apiroutes.cgLogin({
+        email: email,
+        password: password
+    })
+    .then(res => {
+        console.log("caregiver logged in");
+        localStorage.clear()
+        localStorage.setItem('caregiver',true)
+
+    })
+    .then(res => {
+        if(localStorage.getItem("caregiver") === true) {
+        history.push("/profile")
+        }
+        else {
+            setTimeout(() => {
+                history.push("/profile")
+                window.location.reload()
+            }, 2000)
+        }
+
+    })
+    .catch((err) => {
+          setError();
+          console.log(err);
+        });
+
+}
+}
+
+    return (
+        <>
+
       <LoginWrapper>
         <section className="col-10 mx-auto justify-content-center text-center col-lg-5">
           {state.errorMessage && (
