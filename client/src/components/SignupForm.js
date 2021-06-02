@@ -83,8 +83,9 @@ function SignupForm(props) {
         className="btn btn-dark localBtn"
         onClick={props.handleSubmit}
         >Submit</button>
-        <section className="m-3 justify-content-end text-end">
+        <section className="m-3 justify-content-end text-center">
           <label className="form-label">Already a member?</label>
+          <br></br>
           <Link id="loginInstead" to="/login" className="btn btn-light localBtn">Login</Link>
         </section>
 

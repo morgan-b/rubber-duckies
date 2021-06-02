@@ -42,3 +42,11 @@
    cursor: pointer;
 }
 
+
+.error{
+   color:red
+}
+
+.subtext{
+   font-size: calc(1.13rem + .1vw)!important;
+}
