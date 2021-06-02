@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useHistory, withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import "./style.css";
 import LoginWrapper from "../components/LoginWrapper";
 import LoginForm from "../components/LoginForm";
 import Apiroutes from "../utils/Apiroutes";
 
-const history = useHistory();
+
 
 function Login() {
   //use state to set email and password from user input + set usertype
@@ -14,7 +14,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [usertype, setUsertype] = useState("");
   const [state, setState] = useState("");
-  
+  const history = useHistory();
 
   //When user inputs email, set email
   const loginEmailChange = (e) => {
@@ -123,4 +123,4 @@ else if (usertype === "caregiver") {
   );
 }
 
-export default withRouter(Login);
+export default Login;
