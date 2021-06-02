@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
@@ -21,6 +21,9 @@
     "if-env": "^1.0.4",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2"
+  },
+  "engines": {
+    "node": "14.15.5"
   },
   "devDependencies": {
     "concurrently": "^4.1.2",

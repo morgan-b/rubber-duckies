@@ -21,12 +21,17 @@
     "react-vis": "^1.11.7",
     "sequelize": "^6.6.2"
   },
+  "engines": {
+    "node": "14.15.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  
+
   "browserslist": [
     ">0.2%",
     "not dead",
