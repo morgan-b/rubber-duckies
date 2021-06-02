@@ -86,7 +86,7 @@ const handleSubmit = (e) => {
       <LoginWrapper>
 
     <section className="col-10 mx-auto justify-content-center text-center col-lg-5">
-      <img src={logo} className="img-fluid" style={{'width':'200px'}} alt="logo"/>
+     
 
      <SignupForm
      handleChange={handleChange}

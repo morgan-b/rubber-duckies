@@ -39,8 +39,9 @@ function LoginForm(props) {
                 </section>
 
                 <button id="login" className="btn btn-dark localBtn" onClick={props.handleLogin}>Login</button>
-                <section className="m-3 justify-content-end text-end">
+                <section className="m-3 justify-content-end text-center">
                     <label className="form-label">Not a member yet?</label>
+                    <br></br>
                     <Link id="signupInstead" to="/signup" className="btn btn-light localBtn">Signup</Link>
                     </section>
             </form>  
