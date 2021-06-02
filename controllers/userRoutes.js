@@ -31,6 +31,7 @@ router.get("/profile", async (req,res) => {
         where: { 
           caregiverid: req.session.caregiver_id,
          },
+         
       });
   
       if (!userData) {
@@ -40,7 +41,7 @@ router.get("/profile", async (req,res) => {
         return;
       }
   
-      return res.status(200).json(userData);
+      return  res.setHeader("Content-Type", "application/json").status(200).json(userData);
       
     } catch (err) {
       res.status(400).json(err);
