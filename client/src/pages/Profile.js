@@ -59,7 +59,7 @@ return (
 
         {users.length ?(
         users.map(user => (
-            <div clasName="col">
+            <div className="col">
             <ProfileCard
             user= {user}
             handleClick={handleClick}

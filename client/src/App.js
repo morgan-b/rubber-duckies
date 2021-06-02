@@ -20,11 +20,10 @@ function App() {
 
     setUserloggedin(auth);
     setCgloggedin(cgAuth);
-  });
+  }, []);
 
   return (
     <Router>
-      <div>
         <Switch>
           <Route exact path={"/signup"}>
             <Signup />
@@ -70,11 +69,9 @@ function App() {
           exact 
           path={"/userdetails"}
           render={() => (cgloggedin ? <UserDetails /> : <Login />)}
-
           />
             
         </Switch>
-      </div>
     </Router>
   );
 }
