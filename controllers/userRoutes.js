@@ -25,7 +25,8 @@ router.get("/", async (req,res) => {
     }
   })
 
-router.get("/profile", async (req,res) => {
+router.get("profile", async (req,res) => {
+  console.log("hello",req.body)
     try {
       const userData = await User.findAll({
         where: { 
@@ -41,7 +42,7 @@ router.get("/profile", async (req,res) => {
         return;
       }
   
-      return  res.setHeader("Content-Type", "application/json").status(200).json(userData);
+      return  res.status(200).json(userData);
       
     } catch (err) {
       res.status(400).json(err);
@@ -49,6 +50,7 @@ router.get("/profile", async (req,res) => {
   })
 
 router.get("/useremotions", async (req,res) => {
+  console.log("hello",req.session)
     try {
       const userData = await User.findOne({
         where: { 
