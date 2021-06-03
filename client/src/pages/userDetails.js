@@ -139,7 +139,7 @@ const pieChart2 = () => {
                     {new Date(action.date_created).toString().substring(0, 15)}
                   </td>
                   <td key={action.userActionDetailId + 2}>
-                    {new Date(action.date_created).toString().substring(15, 57)}
+                    {new Date(action.date_created).toLocaleString([], {timeStyle: 'short'})}
                   </td>
                 </tr>
               ))
