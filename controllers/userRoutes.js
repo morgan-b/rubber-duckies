@@ -25,7 +25,7 @@ router.get("/", async (req,res) => {
     }
   })
 
-router.get("profile", async (req,res) => {
+router.get("/profile", async (req,res) => {
   console.log("hello",req.body)
     try {
       const userData = await User.findAll({
