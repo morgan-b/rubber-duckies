@@ -24,46 +24,58 @@ function App() {
 
   return (
     <Router>
-      <Switch>
-        <Route exact path={"/signup"}>
-          <Signup />
-        </Route>
+        <Switch>
+          <Route exact path={"/signup"}>
+            <Signup />
+          </Route>
 
-        <Route exact path={["/", "/login"]}>
-          <Login />
-        </Route>
+          <Route exact path={["/", "/login"]}>
+            <Login />
+          </Route>
 
-        <Route exact path={"/home"}>
-          <Homepage />
-          {/* // render={() => (userloggedin ? <Homepage /> : <Login />)} */}
-        </Route>
+          <Route
+            exact
+            path={"/home"}>
+            <Homepage/>
+            {/* // render={() => (userloggedin ? <Homepage /> : <Login />)} */}
+          </Route>
 
-        <Route exact path={"/welcomeuser"}>
-          <WelcomeUser />
-          {/* // render={() => (userloggedin ? <WelcomeUser /> : <Login />)} */}
-        </Route>
+          <Route
+            exact
+            path={"/welcomeuser"}>
+              <WelcomeUser />
+            {/* // render={() => (userloggedin ? <WelcomeUser /> : <Login />)} */}
+            </Route>
 
-        <Route exact path={"/assessment"}>
-          {/* // render={() => (userloggedin ? <Assessment /> : <Login />)} */}
-          <Assessment />
-        </Route>
+          <Route
+            exact
+            path={"/assessment"}>
+            {/* // render={() => (userloggedin ? <Assessment /> : <Login />)} */}
+            <Assessment/>
+            </Route>
 
-        <Route exact path={"/profile"}>
+          <Route 
+          exact 
+          path={"/profile"}>
           {/* // render={() => (cgloggedin ? <Profile /> : <Login />)} */}
-          <Profile />
-        </Route>
+<Profile/>
+          </Route>
 
-        <Route exact path={"/adduser"}>
+          <Route 
+          exact 
+          path={"/adduser"}>
           {/* // render={() => (cgloggedin ? <AddUser /> : <Login />)} */}
-          <AddUser />
-        </Route>
+         <AddUser/>
+          </Route>
 
-        <Route exact path={"/userdetails"}>
+          <Route 
+          exact 
+          path={"/userdetails"}>
           {/* // render={() => (cgloggedin ? <UserDetails /> : <Login />)} */}
           <UserDetails />
-        </Route>
-        
-      </Switch>
+          </Route>
+            
+        </Switch>
     </Router>
   );
 }

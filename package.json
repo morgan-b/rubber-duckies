@@ -10,7 +10,7 @@
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
-    "build": "GENERATE_SOURCEMAP=false cd client && npm run build",
+    "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.2",
-    "express": "^4.17.1",
     "nodemon": "^1.19.4"
   },
   "browserslist": {
