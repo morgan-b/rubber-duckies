@@ -24,54 +24,46 @@ function App() {
 
   return (
     <Router>
-        <Switch>
-          <Route exact path={"/signup"}>
-            <Signup />
-          </Route>
+      <Switch>
+        <Route exact path={"/signup"}>
+          <Signup />
+        </Route>
 
-          <Route exact path={["/", "/login"]}>
-            <Login />
-          </Route>
+        <Route exact path={["/", "/login"]}>
+          <Login />
+        </Route>
 
-          <Route
-            exact
-            path={"/home"}
-            // render={() => (userloggedin ? <Homepage /> : <Login />)}
-          />
+        <Route exact path={"/home"}>
+          <Homepage />
+          {/* // render={() => (userloggedin ? <Homepage /> : <Login />)} */}
+        </Route>
 
-          <Route
-            exact
-            path={"/welcomeuser"}
-            // render={() => (userloggedin ? <WelcomeUser /> : <Login />)}
-          />
+        <Route exact path={"/welcomeuser"}>
+          <WelcomeUser />
+          {/* // render={() => (userloggedin ? <WelcomeUser /> : <Login />)} */}
+        </Route>
 
-          <Route
-            exact
-            path={"/assessment"}
-            // render={() => (userloggedin ? <Assessment /> : <Login />)}
-          />
+        <Route exact path={"/assessment"}>
+          {/* // render={() => (userloggedin ? <Assessment /> : <Login />)} */}
+          <Assessment />
+        </Route>
 
-          <Route 
-          exact 
-          path={"/profile"}
-          // render={() => (cgloggedin ? <Profile /> : <Login />)}
+        <Route exact path={"/profile"}>
+          {/* // render={() => (cgloggedin ? <Profile /> : <Login />)} */}
+          <Profile />
+        </Route>
 
-          />
+        <Route exact path={"/adduser"}>
+          {/* // render={() => (cgloggedin ? <AddUser /> : <Login />)} */}
+          <AddUser />
+        </Route>
 
-          <Route 
-          exact 
-          path={"/adduser"}
-          // render={() => (cgloggedin ? <AddUser /> : <Login />)}
-          />
-          
-
-          <Route 
-          exact 
-          path={"/userdetails"}
-          // render={() => (cgloggedin ? <UserDetails /> : <Login />)}
-          />
-            
-        </Switch>
+        <Route exact path={"/userdetails"}>
+          {/* // render={() => (cgloggedin ? <UserDetails /> : <Login />)} */}
+          <UserDetails />
+        </Route>
+        
+      </Switch>
     </Router>
   );
 }
