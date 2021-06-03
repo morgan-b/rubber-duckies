@@ -36,39 +36,39 @@ function App() {
           <Route
             exact
             path={"/home"}
-            render={() => (userloggedin ? <Homepage /> : <Login />)}
+            // render={() => (userloggedin ? <Homepage /> : <Login />)}
           />
 
           <Route
             exact
             path={"/welcomeuser"}
-            render={() => (userloggedin ? <WelcomeUser /> : <Login />)}
+            // render={() => (userloggedin ? <WelcomeUser /> : <Login />)}
           />
 
           <Route
             exact
             path={"/assessment"}
-            render={() => (userloggedin ? <Assessment /> : <Login />)}
+            // render={() => (userloggedin ? <Assessment /> : <Login />)}
           />
 
           <Route 
           exact 
           path={"/profile"}
-          render={() => (cgloggedin ? <Profile /> : <Login />)}
+          // render={() => (cgloggedin ? <Profile /> : <Login />)}
 
           />
 
           <Route 
           exact 
           path={"/adduser"}
-          render={() => (cgloggedin ? <AddUser /> : <Login />)}
+          // render={() => (cgloggedin ? <AddUser /> : <Login />)}
           />
           
 
           <Route 
           exact 
           path={"/userdetails"}
-          render={() => (cgloggedin ? <UserDetails /> : <Login />)}
+          // render={() => (cgloggedin ? <UserDetails /> : <Login />)}
           />
             
         </Switch>

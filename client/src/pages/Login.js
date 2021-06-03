@@ -50,19 +50,20 @@ function Login() {
     console.log("user logged in");
     localStorage.clear()
     localStorage.setItem('user', true)
+    history.push("/home")
     })
-    .then (res => {
-    if(localStorage.getItem("user") === true) {
-            history.push("/home")
-                }
-                else {
-                    setTimeout(() => {
-                        history.push("/home")
-                        window.location.reload()
-                    }, 2000)
-                }
+    // .then (res => {
+    // if(localStorage.getItem("user") === true) {
+    //         history.push("/home")
+    //             }
+    //             else {
+    //                 setTimeout(() => {
+    //                     history.push("/home")
+    //                     window.location.reload()
+    //                 }, 2000)
+    //             }
 
-    })
+    // })
    .catch((err) => {
           setError();
           console.log(err);
@@ -77,20 +78,21 @@ else if (usertype === "caregiver") {
         console.log("caregiver logged in");
         localStorage.clear()
         localStorage.setItem('caregiver',true)
-
-    })
-    .then(res => {
-        if(localStorage.getItem("caregiver") === true) {
         history.push("/profile")
-        }
-        else {
-            setTimeout(() => {
-                history.push("/profile")
-                window.location.reload()
-            }, 2000)
-        }
 
     })
+    // .then(res => {
+    //     if(localStorage.getItem("caregiver") === true) {
+    //     history.push("/profile")
+    //     }
+    //     else {
+    //         setTimeout(() => {
+    //             history.push("/profile")
+    //             window.location.reload()
+    //         }, 2000)
+    //     }
+
+    // })
     .catch((err) => {
           setError();
           console.log(err);
