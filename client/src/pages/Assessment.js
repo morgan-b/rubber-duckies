@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import AssessCard from "../components/AssessmentCard";
 import NavBar from "../components/NavBar";
 import AssessWrapper from "../components/AssessmentWrapper";
-import SearchApi from "../utils/SearchApi";
+//import SearchApi from "../utils/SearchApi";
 import red from "../assets/red.jpg";
 import blue from "../assets/blue.png";
 import yellow from "../assets/yellow.jpg";
@@ -18,6 +18,7 @@ import Sad from "../assets/Sad.png"
 import Nervous from "../assets/Nervous.png"
 import Apiroutes from "../utils/Apiroutes";
 import "./style.css";
+import { createClient } from 'pexels';
 
 //array to hold all wants and needs we need to loop through
 const emneeds = ["Hungry", "Thirsty", "Restroom", "Happy", "Sad", "Nervous"];
@@ -37,7 +38,6 @@ function Assessment() {
     sad: "",
     nervous: "",
   });
-  // nervouse is not being added
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -69,20 +69,24 @@ function Assessment() {
       Apiroutes.assessmentSave(userChoice);
       history.push("/home");
       console.log(userChoice);
-      //using placeholder integar to check that backend route working
-      //need to figure out how to pass actual user id to backend
-
-      //Save user response
     }
   }
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    SearchApi.GetImages(formObject.value)
+    const client = createClient('563492ad6f917000010000017249237531774afd843890629876d160');
+    const query = formObject.value;
 
-      .then((response) => setResCards(response.data.value))
-      .then(() => console.log(resCards))
-      .catch((err) => console.log(err));
+   client.photos.search({ query, per_page: 6 })
+   .then(photos => {
+     console.log(photos.photos)
+     setResCards(photos.photos)
+    });
+    //SearchApi.GetImages(formObject.value)
+
+     // .then((response) => setResCards(response.data.value))
+     // .then(() => console.log(resCards))
+     // .catch((err) => console.log(err));
   }
 
   return (
@@ -108,10 +112,10 @@ function Assessment() {
             <div className="col imgcol">
               <AssessCard
                 onClick={onSave}
-                link={resCard.thumbnail}
-                key={resCard.thumbnail}
-                id={resCard.thumbnail}
-                thumbnail={resCard.thumbnail}
+                link={resCard.src.portrait}
+                key={resCard.id}
+                id={resCard.id}
+                thumbnail={resCard.src.portrait}
                 onSave={onSave}
               ></AssessCard>
             </div>
@@ -170,6 +174,13 @@ function Assessment() {
         )}
      
       </AssessWrapper>
+    
+    <div className="row mt-4 mb-3 text-center">
+
+    <a className="text-dark" href="https://www.pexels.com">Photos provided by Pexels</a>
+
+
+    </div>
     
     </div>
    
