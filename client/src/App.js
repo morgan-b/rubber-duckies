@@ -35,45 +35,45 @@ function App() {
 
           <Route
             exact
-            path={"/home"}>
-              {/* render={() => (userloggedin ? <Homepage /> : <Login />)} /> */}
-         <Homepage/>
-        </Route>
+            path={"/home"}
+            render={() => (userloggedin ? <Homepage /> : <Login />)}/>
+         {/* <Homepage/>
+        </Route> */}
 
           <Route
             exact
-            path={"/welcomeuser"}>
-            {/* render={() => (userloggedin ? <WelcomeUser /> : <Login />)}/> */}
-          <WelcomeUser />
-            </Route>
+            path={"/welcomeuser"}
+            render={() => (userloggedin ? <WelcomeUser /> : <Login />)}/>
+          {/* // <WelcomeUser />
+          //   </Route> */}
 
           <Route
             exact
-            path={"/assessment"}>
-            {/* // render={() => (userloggedin ? <Assessment /> : <Login />)}/> */}
-            <Assessment/>
-            </Route>
+            path={"/assessment"}
+            render={() => (userloggedin ? <Assessment /> : <Login />)}/> 
+            {/* <Assessment/>
+            </Route> */}
 
           <Route 
           exact 
-          path={"/profile"}>
-          {/* // render={() => (cgloggedin ? <Profile /> : <Login />)} /> */}
-         <Profile/>
-          </Route>
+          path={"/profile"}
+          render={() => (cgloggedin ? <Profile /> : <Login />)} />
+          {/* <Profile/>
+           </Route> */}
 
           <Route 
           exact 
-          path={"/adduser"}>
-          {/* // render={() => (cgloggedin ? <AddUser /> : <Login />)}/> */}
-         <AddUser/>
-          </Route>
+          path={"/adduser"}
+          render={() => (cgloggedin ? <AddUser /> : <Login />)}/>
+         {/* <AddUser/>
+          </Route> */}
 
           <Route 
           exact 
-          path={"/userdetails"}>
-           {/* render={() => (cgloggedin ? <UserDetails /> : <Login />)}/> */}
-          <UserDetails />
-          </Route>
+          path={"/userdetails"}
+           render={() => (cgloggedin ? <UserDetails /> : <Login />)}/>
+          {/* <UserDetails />
+          </Route> */}
             
         </Switch>
     </Router>
