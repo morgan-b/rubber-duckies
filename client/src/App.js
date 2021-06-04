@@ -35,17 +35,19 @@ function App() {
         </Route>
 
         <Route exact path={"/home"}>
-          {userloggedin ? <Homepage /> : <Login />}
+          {/* {userloggedin ? <Homepage /> : <Login />} */}
+          <Homepage /> 
         </Route>
 
         <Route exact path={"/welcomeuser"}>
-          {userloggedin ? <WelcomeUser /> : <Login />}
+          {/* {userloggedin ? <WelcomeUser /> : <Login />} */}
 
-
+          <WelcomeUser />
         </Route>
 
         <Route exact path={"/assessment"}>
-          {userloggedin ? <Assessment /> : <Login />}
+          {/* {userloggedin ? <Assessment /> : <Login />} */}
+          <Assessment />
         </Route>
 
         <Route exact path={"/profile"}>
@@ -54,12 +56,13 @@ function App() {
         </Route>
 
         <Route exact path={"/adduser"}>
-          {cgloggedin ? <AddUser /> : <Login />}
-
+          {/* {cgloggedin ? <AddUser /> : <Login />} */}
+          <AddUser />
         </Route>
 
         <Route exact path={"/userdetails"}>
-          {cgloggedin ? <UserDetails /> : <Login />}
+          {/* {cgloggedin ? <UserDetails /> : <Login />} */}
+          <UserDetails />
         </Route>
       </Switch>
     </Router>
