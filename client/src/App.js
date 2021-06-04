@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
@@ -35,19 +35,19 @@ function App() {
         </Route>
 
         <Route exact path={"/home"}>
-          {/* {userloggedin ? <Homepage /> : <Login />} */}
-          <Homepage /> 
+          {userloggedin ? <Homepage /> : <Redirect  from="/home" to ="/login" />}
+    
         </Route>
 
         <Route exact path={"/welcomeuser"}>
-          {/* {userloggedin ? <WelcomeUser /> : <Login />} */}
+          {userloggedin ? <WelcomeUser /> :  <Redirect from="/welcomeuser" to ="/login"/>}
 
-          <WelcomeUser />
+
         </Route>
 
         <Route exact path={"/assessment"}>
-          {/* {userloggedin ? <Assessment /> : <Login />} */}
-          <Assessment />
+          {userloggedin ? <Assessment /> : <Redirect to ="/login"/>}
+          {/* <Assessment /> */}
         </Route>
 
         <Route exact path={"/profile"}>
@@ -56,13 +56,13 @@ function App() {
         </Route>
 
         <Route exact path={"/adduser"}>
-          {/* {cgloggedin ? <AddUser /> : <Login />} */}
-          <AddUser />
+          {cgloggedin ? <AddUser /> : <Redirect to ="/login"/>}
+ 
         </Route>
 
         <Route exact path={"/userdetails"}>
-          {/* {cgloggedin ? <UserDetails /> : <Login />} */}
-          <UserDetails />
+          {cgloggedin ? <UserDetails /> : <Redirect to ="/login"/>}
+
         </Route>
       </Switch>
     </Router>
