@@ -8,6 +8,7 @@ import Assessment from "./pages/Assessment";
 import AddUser from "./pages/AddUser";
 import WelcomeUser from "./pages/WelcomeUser";
 import UserDetails from "./pages/userDetails";
+import ErrorPage from "./pages/ErrorPage";
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
 
   return (
     <Router>
+
+
       <Switch>
         <Route exact path={"/signup"}>
           <Signup />
@@ -63,6 +66,10 @@ function App() {
         <Route exact path={"/userdetails"}>
           {cgloggedin ? <UserDetails /> : <Redirect to ="/login"/>}
 
+        </Route>
+
+        <Route path="*">
+          <ErrorPage />
         </Route>
       </Switch>
     </Router>
