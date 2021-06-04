@@ -9,6 +9,7 @@ import AddUser from "./pages/AddUser";
 import WelcomeUser from "./pages/WelcomeUser";
 import UserDetails from "./pages/userDetails";
 import ErrorPage from "./pages/ErrorPage";
+import CgLogin from "./pages/CgLogin";
 
 
 function App() {
@@ -35,6 +36,10 @@ function App() {
 
         <Route exact path={["/", "/login"]}>
           <Login />
+        </Route>
+
+        <Route exact path={"/cglogin"}>
+          <CgLogin />
         </Route>
 
         <Route exact path={"/home"}>
