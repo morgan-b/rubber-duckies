@@ -17,7 +17,7 @@ const history = useHistory();
 
 
 useEffect(() => {
-
+   
 getCaregiver()
 getData()
    
@@ -25,6 +25,7 @@ getData()
 
 
 function getCaregiver() { 
+
     Apiroutes.getCaregiver()
     .then (res => {
     console.log(res.data)
@@ -34,6 +35,7 @@ function getCaregiver() {
     .catch(err => console.log(err))}
 
 const getData = () => {
+    
     Apiroutes.populateProfile()
     .then (res => 
         setUsers(res.data))
