@@ -18,7 +18,7 @@ function App() {
    const [loggedin, setLoggedin] = useState(false)
    const [cgloggedin, setcgLoggedin] = useState(false)
    
-   
+   console.log(process.env.NODE_ENV)
    function logIn(data) {
      setLoggedin(data)
      console.log("LOGIN CONTEXT",loggedin)
