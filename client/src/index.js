@@ -8,9 +8,9 @@ import 'popups/css/popupS.css';
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React>
     <App />
-  </React.StrictMode>,
+  </React>,
   document.getElementById('root')
 );
 
