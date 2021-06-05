@@ -20,7 +20,7 @@ function LoginWrapper(props) {
 {pathname === ("/login","/") ? (
   <div>
       <h1 className="display-4 fw-bold lh-1 mb-3">Welcome Back Duckies.</h1>
-      <p className="col-lg-10 fs-4 subtext">We've missed you! <br></br>Login below with your email, password, and account type.</p>
+      <p className="col-lg-10 fs-4 subtext">We've missed you! <br></br>Login below with your email and password</p>
       </div>
       ):(   
         <div>
