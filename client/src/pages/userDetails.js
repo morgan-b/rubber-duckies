@@ -3,6 +3,9 @@ import { useLocation } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import logo from "../assets/logo-duckies.png";
 import Apiroutes from "../utils/Apiroutes";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
 import {
   RadialChart,
@@ -15,13 +18,17 @@ import {
 import "./style.css";
 
 function userDetails() {
+  const localizer = momentLocalizer(moment);
   const [userData, setUserData] = useState([]);
   const [actions, setActions] = useState([]);
   const [timeStamp, setTimeStamps] = useState([]);
+  const [events, setEvents] = useState([]);
   const FlexibleXYPlot = makeWidthFlexible(XYPlot);
+
   //uselocation hook to get data from one page to the next.
   //used this to pass on user data depending on which user is clicked on
   const { state } = useLocation();
+  let theEvent = []
 
   console.log(state);
 
@@ -37,16 +44,67 @@ function userDetails() {
     Apiroutes.userDetails(userid)
 
       .then((res) => {
-        console.log("user found!");
+        // console.log("user found!");
 
         setActions(res.data);
         setTimeStamps(res.data);
-
         console.log(res.data);
+        setCalendar(res.data);
       })
 
       .catch((err) => console.log(err));
   };
+
+  const setCalendar = (datas) => {
+    var months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    console.log(datas);
+    datas.map((data) => {
+      let title = data.userInput;
+      let year = parseInt(
+        new Date(data.date_created).toLocaleString("en", { year: "numeric" })
+      );
+      let month = months.indexOf(
+        new Date(data.date_created).toLocaleString("en-us", { month: "long" })
+      );
+      let day = parseInt(
+        new Date(data.date_created).toLocaleString("en", { day: "numeric" })
+      );
+      let hour = parseInt(
+        new Date(data.date_created).toString().substring(16, 18)
+      );
+      let minute = parseInt(
+        new Date(data.date_created).toLocaleString("en", { minute: "numeric" })
+      );
+
+      let newEvent = {
+        title: title,
+        allDay: false,
+        start: new Date(year, month, day, hour, minute),
+        end: new Date(year, month, day, hour, minute),
+      };
+
+      theEvent.push(newEvent);
+      console.log(theEvent);
+      setEvents(theEvent)
+    });
+  };
+
+  // function seeCal() {
+  //   console.log(events)
+  // }
 
   //function to populate piechart using react-vis npm
   const pieChart = () => {
@@ -192,10 +250,23 @@ function userDetails() {
           <p className="lead mb-4">View reports below</p>
         </div>
       </div>
-      
 
       <div className="container text-center justify-content-center">
-      {actions.length ? (
+        {actions.length ? (
+          <div>
+            <Calendar
+              localizer={localizer}
+              events={events}
+              startAccessor="start"
+              endAccessor="end"
+              style={{ height: 500 }}
+            />
+          </div>
+        ) : (
+          <h4>{userData.firstname} has no actions to display yet!</h4>
+        )}
+
+        {actions.length ? (
           <>
             <div className="row">
               <div className="col">
@@ -203,7 +274,6 @@ function userDetails() {
                 <br></br>
                 <div className="d-flex justify-content-center">
                   <FlexibleXYPlot height={300} xType="ordinal">
-                 
                     <VerticalBarSeries
                       className={"barchart"}
                       data={lineChart()}
@@ -211,10 +281,9 @@ function userDetails() {
                     <XAxis />
                     <YAxis />
                   </FlexibleXYPlot>
-       
                 </div>
               </div>
-              
+
               <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2">
                 <div className="col">
                   <h3>Emotions</h3>
@@ -229,7 +298,7 @@ function userDetails() {
                     />
                   </div>
                 </div>
-               
+
                 <div className="col">
                   <h3>Actions</h3>
                   <br></br>
@@ -249,51 +318,6 @@ function userDetails() {
         ) : (
           <h4>{userData.firstname} has no actions to display yet!</h4>
         )}
-        <table className="table table-striped">
-          <thead>
-            <tr key="a">
-              <th key="b" scope="col">
-                Needs
-              </th>
-              <th key="c" scope="col">
-                Date
-              </th>
-              <th key="d" scope="col">
-                Time Stamp
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {actions.length ? (
-              actions.map((action) => (
-                <tr key={action.userid + 3}>
-                  <td key={action.userActionDetailId + 1}>
-                    {" "}
-                    {action.userInput}
-                  </td>
-                  <td key={action.userActionDetailId + 2}>
-                    {new Date(action.date_created).toString().substring(0, 15)}
-                  </td>
-                  <td key={action.userActionDetailId + 2}>
-                    {/* {new Date(action.date_created).toString().substring(15, 57)} */}
-                    {new Date(action.date_created).toLocaleString([], {
-                      timeStyle: "short",
-                    })}
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td key="aa"> awaiting new action</td>
-                <td key="bb"> awaiting new action</td>
-                <td key="cc"> awaiting new action</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-
-       
       </div>
     </>
   );
