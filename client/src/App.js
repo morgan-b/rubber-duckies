@@ -43,34 +43,34 @@ function App() {
         </Route>
 
         <Route exact path={"/home"}>
-          {userloggedin ? <Homepage /> : <Redirect  from="/home" to ="/login" />}
-    
+          {/* {userloggedin ? <Homepage /> : <Redirect  from="/home" to ="/login" />} */}
+         <Homepage/>
         </Route>
 
         <Route exact path={"/welcomeuser"}>
-          {userloggedin ? <WelcomeUser /> :  <Redirect from="/welcomeuser" to ="/login"/>}
-
+          {/* {userloggedin ? <WelcomeUser /> :  <Redirect from="/welcomeuser" to ="/login"/>} */}
+        <WelcomeUser/>
 
         </Route>
 
         <Route exact path={"/assessment"}>
-          {userloggedin ? <Assessment /> : <Redirect to ="/login"/>}
-          {/* <Assessment /> */}
+          {/* {userloggedin ? <Assessment /> : <Redirect to ="/login"/>} */}
+          <Assessment />
         </Route>
 
         <Route exact path={"/profile"}>
-          {cgloggedin ? <Profile /> : <Login />}
-
+          {/* {cgloggedin ? <Profile /> : <Login />} */}
+        <Profile/>
         </Route>
 
         <Route exact path={"/adduser"}>
-          {cgloggedin ? <AddUser /> : <Redirect to ="/login"/>}
- 
+          {/* {cgloggedin ? <AddUser /> : <Redirect to ="/login"/>} */}
+         <AddUser/>
         </Route>
 
         <Route exact path={"/userdetails"}>
-          {cgloggedin ? <UserDetails /> : <Redirect to ="/login"/>}
-
+          {/* {cgloggedin ? <UserDetails /> : <Redirect to ="/login"/>} */}
+        <UserDetails/>
         </Route>
 
         <Route path="*">

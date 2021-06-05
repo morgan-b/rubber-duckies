@@ -43,21 +43,21 @@ function Login() {
         console.log("caregiver logged in");
         localStorage.clear()
         localStorage.setItem('caregiver',true)
-        //history.push("/profile")
+        history.push("/profile")
 
     })
-     .then(res => {
-         if(localStorage.getItem("caregiver") === true) {
-         history.push("/profile")
-         }
-         else {
-             setTimeout(() => {
-                 history.push("/profile")
-                 window.location.reload()
-             }, 1000)
-         }
+    //  .then(res => {
+    //      if(localStorage.getItem("caregiver") === true) {
+    //      history.push("/profile")
+    //      }
+    //      else {
+    //          setTimeout(() => {
+    //              history.push("/profile")
+    //              window.location.reload()
+    //          }, 1000)
+    //      }
 
-     })
+    // })
     .catch((err) => {
           setError();
           console.log(err);
