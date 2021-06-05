@@ -36,7 +36,6 @@ function LoginForm(props) {
                     <Link id="signupInstead" to="/signup" className="btn btn-light localBtn">Signup</Link>
                     </section>
                     <br></br>
-                    <br></br>
                     <Link id="cgLogin" to="/cglogin" className="btn btn-light localBtn">Login as CareGiver</Link>
             </form>  
         </>

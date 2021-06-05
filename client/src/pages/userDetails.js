@@ -5,41 +5,74 @@ import logo from "../assets/logo-duckies.png";
 import Apiroutes from "../utils/Apiroutes";
 import BarChart from "../components/UserChart";
 import { RadialChart } from "react-vis";
-import "./style.css"
+import "./style.css";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
 function userDetails() {
+  const localizer = momentLocalizer(moment);
   const [userData, setUserData] = useState([]);
   const [actions, setActions] = useState([]);
   const [timeStamp, setTimeStamps] = useState([]);
+  const [events, setEvents] = useState([]);
+
 
   //uselocation hook to get data from one page to the next.
   //used this to pass on user data depending on which user is clicked on
   const { state } = useLocation();
 
-  console.log(state);
+  // console.log(state);
 
   useEffect(() => {
     setUserData(state);
     let userid = state.userid;
-    console.log(userid);
+   
+    // console.log(userid);
 
     populateUserDetails(userid);
   }, []);
+
+  
 
   const populateUserDetails = (userid) => {
     Apiroutes.userDetails(userid)
 
       .then((res) => {
-        console.log("user found!");
+        // console.log("user found!");
 
         setActions(res.data);
         setTimeStamps(res.data);
+        console.log(res.data)
+        setCalendar(res.data);
 
-        console.log(res.data);
       })
 
       .catch((err) => console.log(err));
   };
+
+  const setCalendar = (datas) => {
+    var  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    console.log(datas)
+    datas.map((data) => {
+      let title = data.userInput
+      let year = parseInt(new Date(data.date_created).toLocaleString("en", {year: "numeric"}))
+      let month = months.indexOf(new Date(data.date_created).toLocaleString('en-us', { month: 'long' }))
+      let day = parseInt(new Date(data.date_created).toLocaleString("en", {day: "numeric"}))
+      let hour = parseInt(new Date(data.date_created).toString().substring(16, 18))
+      let minute = parseInt(new Date(data.date_created).toLocaleString("en", {minute: "numeric"}))
+      setEvents([{
+        'title': title,
+        'allDay': false,
+        'start': new Date(year, month, day, hour, minute),
+        'end': new Date(year, month, day, hour, minute),
+      }])
+    })
+  };
+
+  // function seeCal() {
+  //   console.log(events)
+  // }
 
   //function to populate piechart using react-vis npm
   const pieChart = () => {
@@ -48,7 +81,7 @@ function userDetails() {
       sad: 0,
       nervous: 0,
     };
-
+    // console.log(datas)
     actions.forEach((action) => {
       if (action.userInput === "Happy") {
         emData.happy += 1;
@@ -58,40 +91,41 @@ function userDetails() {
         emData.nervous += 1;
       }
     });
-    console.log(emData);
+    // console.log(emData);
 
     return [
-      { angle: emData.happy, label: "Happy", className:"piechart" },
-      { angle: emData.sad, label: "Sad", className:"piechart"},
-      { angle: emData.nervous, label: "Nervous", className:"piechart" },
+      { angle: emData.happy, label: "Happy", className: "piechart" },
+      { angle: emData.sad, label: "Sad", className: "piechart" },
+      { angle: emData.nervous, label: "Nervous", className: "piechart" },
     ];
   };
 
-//function to populate piechart using react-vis npm
-const pieChart2 = () => {
-  let needsData = {
-    restroom: 0,
-    thirsty: 0,
-    hungry: 0,
+  //function to populate piechart using react-vis npm
+  const pieChart2 = () => {
+    console.log(events)
+    let needsData = {
+      restroom: 0,
+      thirsty: 0,
+      hungry: 0,
+    };
+
+    actions.forEach((action) => {
+      if (action.userInput === "Restroom") {
+        needsData.restroom += 1;
+      } else if (action.userInput === "Thirsty") {
+        needsData.thirsty += 1;
+      } else if (action.userInput == "Hungry") {
+        needsData.hungry += 1;
+      }
+    });
+    // console.log(needsData);
+
+    return [
+      { angle: needsData.restroom, label: "Restroom", className: "piechart" },
+      { angle: needsData.thirsty, label: "Thirsty", className: "piechart" },
+      { angle: needsData.hungry, label: "Hungry", className: "piechart" },
+    ];
   };
-
-  actions.forEach((action) => {
-    if (action.userInput === "Restroom") {
-      needsData.restroom += 1;
-    } else if (action.userInput === "Thirsty") {
-      needsData.thirsty += 1;
-    } else if (action.userInput == "Hungry") {
-      needsData.hungry += 1;
-    }
-  });
-  console.log(needsData);
-
-  return [
-    { angle: needsData.restroom, label: "Restroom", className:"piechart" },
-    { angle: needsData.thirsty, label: "Thirsty", className:"piechart" },
-    { angle: needsData.hungry, label: "Hungry", className:"piechart" },
-  ];
-};
 
   return (
     <>
@@ -140,7 +174,9 @@ const pieChart2 = () => {
                   </td>
                   <td key={action.userActionDetailId + 2}>
                     {/* {new Date(action.date_created).toString().substring(15, 57)} */}
-                    {new Date(action.date_created).toLocaleString([], {timeStyle: 'short'})}
+                    {new Date(action.date_created).toLocaleString([], {
+                      timeStyle: "short",
+                    })}
                   </td>
                 </tr>
               ))
@@ -154,39 +190,53 @@ const pieChart2 = () => {
           </tbody>
         </table>
 
-       {actions.length ? (
-         <>
-        <div className="row">
-          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2">
-            
-            <div className="col">
-            <div className="d-flex justify-content-center">
-              <RadialChart
-                data={pieChart()}
-                width={300}
-                height={300}
-                showLabels={true}
-                labelsAboveChildren={true}
-              />
-            </div>
-            </div>
-            
-            <div className="col">
-            <div className="d-flex justify-content-center">
-              <RadialChart
-                data={pieChart2()}
-                width={300}
-                height={300}
-                showLabels={true}
-                labelsAboveChildren={true}
-              />
-            </div>
-          </div>
+        {actions.length ? (
+          <div>
+          
+          <Calendar
+            localizer={localizer}
+            events={events}
+            startAccessor="start"
+            endAccessor="end"
+            style={{ height: 500 }}
+          />
         </div>
-        </div>
-        <BarChart data={timeStamp}></BarChart>
-        </>
-        ):(
+        ) : (
+          <h4>{userData.firstname} has no actions to display yet!</h4>
+        )}
+
+        {actions.length ? (
+          <>
+            <div className="row">
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2">
+                <div className="col">
+                  <div className="d-flex justify-content-center">
+                    <RadialChart
+                      data={pieChart()}
+                      width={300}
+                      height={300}
+                      showLabels={true}
+                      labelsAboveChildren={true}
+                    />
+                  </div>
+                </div>
+
+                <div className="col">
+                  <div className="d-flex justify-content-center">
+                    <RadialChart
+                      data={pieChart2()}
+                      width={300}
+                      height={300}
+                      showLabels={true}
+                      labelsAboveChildren={true}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <BarChart data={timeStamp}></BarChart>
+          </>
+        ) : (
           <h4>{userData.firstname} has no actions to display yet!</h4>
         )}
       </div>
