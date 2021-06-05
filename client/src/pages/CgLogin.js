@@ -5,10 +5,12 @@ import "./style.css";
 import CgLoginWrapper from "../components/CgLoginWrapper";
 import CgLoginForm from "../components/CgLoginForm";
 import Apiroutes from "../utils/Apiroutes";
+import {useUserContext} from "../utils/AuthContext";
 
 
 
 function Login() {
+  const {cgLogIn} =useUserContext()
   //use state to set email and password from user input + set usertype
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,10 +42,17 @@ function Login() {
         password: password
     })
     .then(res => {
+      console.log(res)
         console.log("caregiver logged in");
+        cgLogIn(res.data.cgloggedin);
         localStorage.clear()
-        localStorage.setItem('caregiver',true)
-        history.push("/profile")
+      
+
+    })
+    .then(() => {
+      
+      localStorage.setItem('caregiver',true)
+      history.push("/profile")
 
     })
     //  .then(res => {

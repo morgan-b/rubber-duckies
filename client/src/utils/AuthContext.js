@@ -2,11 +2,14 @@ import {createContext, useContext} from 'react';
 
 export const UserContext = createContext ({
     loggedin: false,
+    cgloggedin: false,
     logIn: () => {},
-    logOut: () => {}
+    logOut: () => {},
+    cgLogIn: () => {}
+
 });
 
 export function useUserContext () {
-    const {loggedin, logIn, logOut} = useContext(UserContext)
-    return {loggedin, logIn, logOut}
+    const {loggedin, cgloggedin, logIn, logOut, cgLogIn} = useContext(UserContext)
+    return {loggedin, cgloggedin, logIn, logOut, cgLogIn}
 }

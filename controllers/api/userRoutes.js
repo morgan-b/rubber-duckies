@@ -66,11 +66,13 @@ router.post("/cglogin", async (req, res) => {
     req.session.save(() => {
       req.session.caregiver_id = caregiverData.caregiverid;
       req.session.logged_in = true;
+
       
 
       return res.json({
         caregiver: caregiverData,
         message: "You are now logged in!",
+        cgloggedin: req.session.logged_in,
       });
       
     });

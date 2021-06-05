@@ -39,14 +39,18 @@ function Login() {
         console.log("user logged in");
         console.log(res)
         logIn(res.data.loggedin)
+        localStorage.clear();
+        console.log()
 
-         localStorage.clear();
-         localStorage.setItem("user", true);
+        
       })
-      .then((res) => {
-        history.push("/home")
+      .then(() => {
+        
+        localStorage.setItem("user", true);
+     
 
       })
+      .then(() => { history.push("/home")})
       //  .then (res => {
       //  if(localStorage.getItem("user") === true) {
       //          history.push("/home")
