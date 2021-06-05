@@ -113,6 +113,7 @@ router.post("/userlogin", async (req, res) => {
 
       return res.json({
         user: userData,
+        loggedin: req.session.logged_in,
         message: "You are now logged in!",
       });
     });

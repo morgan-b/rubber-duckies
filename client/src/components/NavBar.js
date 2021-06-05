@@ -3,8 +3,18 @@ import React, {useState, useEffect} from "react";
 import { Link, useHistory } from "react-router-dom";
 import logo from "../assets/logo-duckies.png";
 import Apiroutes from "../utils/Apiroutes";
+//import {useUserContext, UserContext} from "../utils/AuthContext";
+
 
 function NavBar() {
+
+ // const [userloggedin, setUserloggedin] = useState(false)
+
+  // function logOut() {
+  //   setUserloggedin(false)
+  //   console.log("LOGOUT CONTEXT", userloggedin )
+  // }
+
   const [userloggedin, setUserloggedin] = useState(false);
 
   useEffect(() => {
@@ -19,12 +29,14 @@ function NavBar() {
   const handleLogout = () => {
     Apiroutes.logOut().then((res) => {
       console.log("logged out");
+      //logOut()
       localStorage.clear();
       history.push("/login");
     });
   };
 
   return (
+    // <UserContext.Provider value= {{userloggedin, logOut}}>
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
         <Link className="navbar-brand" to={userloggedin ? ("/home"):("/profile")}>
@@ -63,6 +75,7 @@ function NavBar() {
         </div>
       </div>
     </nav>
+   // </UserContext.Provider>
   );
 }
 

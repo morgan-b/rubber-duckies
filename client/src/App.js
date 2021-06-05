@@ -10,25 +10,37 @@ import WelcomeUser from "./pages/WelcomeUser";
 import UserDetails from "./pages/userDetails";
 import ErrorPage from "./pages/ErrorPage";
 import CgLogin from "./pages/CgLogin";
+ import {UserContext} from "./utils/AuthContext";
 
 
 function App() {
-  const [userloggedin, setUserloggedin] = useState(false);
-  const [cgloggedin, setCgloggedin] = useState(false);
 
-  useEffect(() => {
-    const auth = localStorage.getItem("user");
-    const cgAuth = localStorage.getItem("caregiver");
-    console.log(auth);
+   const [loggedin, setLoggedin] = useState(false)
 
-    setUserloggedin(auth);
-    setCgloggedin(cgAuth);
-  }, []);
+   function logIn(data) {
+     setLoggedin(data)
+     console.log("LOGIN CONTEXT",loggedin)
+   }
+
+  
+
+
+  //const [userloggedin, setUserloggedin] = useState(false);
+  //const [cgloggedin, setCgloggedin] = useState(false);
+
+  //useEffect(() => {
+  //  const auth = localStorage.getItem("user");
+   // const cgAuth = localStorage.getItem("caregiver");
+   // console.log(auth);
+
+   // setUserloggedin(auth);
+   // setCgloggedin(cgAuth);
+  //}, []);
 
   return (
+
+     <UserContext.Provider value= {{loggedin, logIn}}>
     <Router>
-
-
       <Switch>
         <Route exact path={"/signup"}>
           <Signup />
@@ -43,18 +55,18 @@ function App() {
         </Route>
 
         <Route exact path={"/home"}>
-          {/* {userloggedin ? <Homepage /> : <Redirect  from="/home" to ="/login" />} */}
+         {/* {loggedin ? <Homepage /> : <Redirect  from="/home" to ="/login" />} */}
          <Homepage/>
         </Route>
 
         <Route exact path={"/welcomeuser"}>
-          {/* {userloggedin ? <WelcomeUser /> :  <Redirect from="/welcomeuser" to ="/login"/>} */}
+          {/* {loggedin ? <WelcomeUser /> :  <Redirect from="/welcomeuser" to ="/login"/>} */}
         <WelcomeUser/>
 
         </Route>
 
         <Route exact path={"/assessment"}>
-          {/* {userloggedin ? <Assessment /> : <Redirect to ="/login"/>} */}
+          {/* {loggedin ? <Assessment /> : <Redirect to ="/login"/>} */}
           <Assessment />
         </Route>
 
@@ -78,6 +90,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
+     </UserContext.Provider>
   );
 }
 
