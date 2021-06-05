@@ -4,8 +4,10 @@ import "./style.css";
 import LoginWrapper from "../components/LoginWrapper";
 import LoginForm from "../components/LoginForm";
 import Apiroutes from "../utils/Apiroutes";
+import {useUserContext} from "../utils/AuthContext";
 
 function Login() {
+  const {logIn} =useUserContext()
   //use state to set email and password from user input + set usertype
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,10 +37,20 @@ function Login() {
     })
       .then((res) => {
         console.log("user logged in");
+        console.log(res)
+        logIn(res.data.loggedin)
         localStorage.clear();
-        localStorage.setItem("user", true);
-        history.push("/home");
+        console.log()
+
+        
       })
+      .then(() => {
+        
+        localStorage.setItem("user", true);
+     
+
+      })
+      .then(() => { history.push("/home")})
       //  .then (res => {
       //  if(localStorage.getItem("user") === true) {
       //          history.push("/home")
