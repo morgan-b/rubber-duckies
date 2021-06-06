@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../assets/logo-duckies.png";
-function LoginWrapper(props) {
+function SignupWrapper(props) {
   return (
     <>
       <section className="container col-xl-10 col-xxl-8 px-4 py-5 text-center">
@@ -15,11 +15,14 @@ function LoginWrapper(props) {
             <>
                 <section>
                   <h1 className="display-4 fw-bold lh-1 mb-3">
-                    Welcome Back Duckies.
+                    Welcome to Rubber Duckies!
                   </h1>
                   <p className="col-lg-10 fs-4 subtext">
-                    We've missed you! <br></br>Login with your email and
-                    password. Are you a caregiver? Click on the caregiver login button to login.
+                    We are so excited that you are here.
+                    <br></br>Rubber Duckies exists to help everyone communicate
+                    in a form that feels best to them. We can't wait to support
+                    your loved ones on their journey to a happier and easier way
+                    of expressing themselves.{" "}
                   </p>
                 </section>
             </>
@@ -31,4 +34,4 @@ function LoginWrapper(props) {
   );
 }
 
-export default LoginWrapper;
+export default SignupWrapper;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import logo from "../assets/logo-duckies.png";
 import "./style.css";
-import LoginWrapper from "../components/LoginWrapper";
+import SignupWrapper from "../components/SignupWrapper";
 import SignupForm from "../components/SignupForm";
 import Apiroutes from "../utils/Apiroutes";
 import { useUserContext } from "../utils/AuthContext";
@@ -64,7 +64,7 @@ function Signup() {
 
   return (
     <>
-      <LoginWrapper>
+      <SignupWrapper>
         <section className="col-10 mx-auto justify-content-center text-center col-lg-5">
           <SignupForm
             handleChange={handleChange}
@@ -72,7 +72,7 @@ function Signup() {
             radioInput={radioInput}
           />
         </section>
-      </LoginWrapper>
+      </SignupWrapper>
     </>
   );
 }
