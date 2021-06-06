@@ -28,14 +28,13 @@ function userDetails() {
   //uselocation hook to get data from one page to the next.
   //used this to pass on user data depending on which user is clicked on
   const { state } = useLocation();
-  let theEvent = []
+  let theEvent = [];
 
   console.log(state);
 
   useEffect(() => {
     setUserData(state);
     let userid = state.userid;
-    console.log(userid);
 
     populateUserDetails(userid);
   }, []);
@@ -44,18 +43,17 @@ function userDetails() {
     Apiroutes.userDetails(userid)
 
       .then((res) => {
-        // console.log("user found!");
+        console.log("user found!");
 
         setActions(res.data);
         setTimeStamps(res.data);
-        console.log(res.data);
         setCalendar(res.data);
       })
 
       .catch((err) => console.log(err));
   };
 
-  const setCalendar = (datas) => {
+  const setCalendar = async (datas) => {
     var months = [
       "January",
       "February",
@@ -70,7 +68,6 @@ function userDetails() {
       "November",
       "December",
     ];
-    console.log(datas);
     datas.map((data) => {
       let title = data.userInput;
       let year = parseInt(
@@ -97,14 +94,11 @@ function userDetails() {
       };
 
       theEvent.push(newEvent);
-      console.log(theEvent);
-      setEvents(theEvent)
+      setTimeout(() => {
+        setEvents(theEvent);
+      }, 100);
     });
   };
-
-  // function seeCal() {
-  //   console.log(events)
-  // }
 
   //function to populate piechart using react-vis npm
   const pieChart = () => {
@@ -123,7 +117,6 @@ function userDetails() {
         emData.nervous += 1;
       }
     });
-    console.log(emData);
 
     return [
       { angle: emData.happy, label: "Happy", className: "piechart" },
@@ -149,7 +142,6 @@ function userDetails() {
         needsData.hungry += 1;
       }
     });
-    console.log(needsData);
 
     return [
       { angle: needsData.restroom, label: "Restroom", className: "piechart" },
@@ -212,22 +204,6 @@ function userDetails() {
         className: "barchart",
       },
     ];
-    console.log(allData);
-
-    //  const newDates = []
-
-    // actions.forEach((action) =>{
-    //   newDates.push(new Date(action.date_created).toLocaleString())
-
-    // })
-
-    // console.log(newDates)
-
-    // const newDatesMap = newDates.map((k,y) => ({x: k}));
-    // console.log(newDatesMap)
-    // const Final =[]
-    // newDatesMap.forEach((d) => {Final.push(d + ",y:" +actions.userInput) })
-    // console.log(Final)
 
     return lineData;
   };
@@ -236,7 +212,7 @@ function userDetails() {
   return (
     <>
       <NavBar />
-      <div className="px-4 py-5 my-5 text-center userHeader">
+      <section className="px-4 py-5 my-5 text-center userHeader">
         <img
           className="d-block mx-auto mb-4"
           src={logo}
@@ -246,14 +222,14 @@ function userDetails() {
         <h1 className="display-5 fw-bold">
           {userData.firstname} {userData.lastname}
         </h1>
-        <div className="col-lg-6 mx-auto">
+        <header className="col-lg-6 mx-auto">
           <p className="lead mb-4">View reports below</p>
-        </div>
-      </div>
+        </header>
+      </section>
 
-      <div className="container text-center justify-content-center">
+      <section className="container text-center justify-content-center">
         {actions.length ? (
-          <div>
+          <article>
             <Calendar
               localizer={localizer}
               events={events}
@@ -261,18 +237,18 @@ function userDetails() {
               endAccessor="end"
               style={{ height: 500 }}
             />
-          </div>
+          </article>
         ) : (
           <h4>{userData.firstname} has no actions to display yet!</h4>
         )}
 
         {actions.length ? (
           <>
-            <div className="row">
-              <div className="col">
+            <section className="row">
+              <section className="col">
                 <h3>Overview</h3>
                 <br></br>
-                <div className="d-flex justify-content-center">
+                <article className="d-flex justify-content-center">
                   <FlexibleXYPlot height={300} xType="ordinal">
                     <VerticalBarSeries
                       className={"barchart"}
@@ -281,14 +257,14 @@ function userDetails() {
                     <XAxis />
                     <YAxis />
                   </FlexibleXYPlot>
-                </div>
-              </div>
+                </article>
+              </section>
 
-              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2">
-                <div className="col">
+              <section className="row row-cols-1 row-cols-md-2 row-cols-lg-2">
+                <section className="col">
                   <h3>Emotions</h3>
                   <br></br>
-                  <div className="d-flex justify-content-center">
+                  <article className="d-flex justify-content-center">
                     <RadialChart
                       data={pieChart()}
                       width={300}
@@ -296,13 +272,13 @@ function userDetails() {
                       showLabels={true}
                       labelsAboveChildren={true}
                     />
-                  </div>
-                </div>
+                  </article>
+                </section>
 
-                <div className="col">
+                <article className="col">
                   <h3>Actions</h3>
                   <br></br>
-                  <div className="d-flex justify-content-center">
+                  <article className="d-flex justify-content-center">
                     <RadialChart
                       data={pieChart2()}
                       width={300}
@@ -310,15 +286,15 @@ function userDetails() {
                       showLabels={true}
                       labelsAboveChildren={true}
                     />
-                  </div>
-                </div>
-              </div>
-            </div>
+                  </article>
+                </article>
+              </section>
+            </section>
           </>
         ) : (
           <h4>{userData.firstname} has no actions to display yet!</h4>
         )}
-      </div>
+      </section>
     </>
   );
 }

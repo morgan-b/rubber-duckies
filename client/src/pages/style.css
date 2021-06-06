@@ -1,70 +1,61 @@
 .localBtn:hover {
-    background-color: rgb(127, 215, 226);
-    color: black;
-    border: white;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
- }
+  background-color: rgb(127, 215, 226);
+  color: black;
+  border: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
 
- .assessCard{
-    height:100%;
-    width:100%;
-    margin:5%;
-    transition: transform 250ms;
- }
+.assessCard {
+  height: 100%;
+  width: 100%;
+  margin: 5%;
+  transition: transform 250ms;
+}
 
- .assessCard:hover {
-   transform: translateY(-10px);
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
- }
- .card-img {
-    height:100%;
-    width: 100%;
+.assessCard:hover {
+  transform: translateY(-10px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card-img {
+  height: 100%;
+  width: 100%;
 }
 
 .localCard {
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .profileCard {
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-   transition: transform 250ms;
-
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: transform 250ms;
 }
 
 .profileCard:hover {
-   transform: translateY(-10px);
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
+  transform: translateY(-10px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .logoutBtn:hover {
-   cursor: pointer;
+  cursor: pointer;
 }
 
-
-.piechart{
-   transition: transform 250ms;
-
+.piechart {
+  transition: transform 250ms;
 }
-.piechart:hover{
-   transform: translateY(-10px);
+.piechart:hover {
+  transform: translateY(-10px);
 }
 
-
-.error{
-   color:red
+.error {
+  color: red;
 }
 
-.subtext{
-   font-size: calc(1.13rem + .1vw)!important;
-
-
+.subtext {
+  font-size: calc(1.13rem + 0.1vw) !important;
 }
 
-.userHeader{
-   margin:2%!important;
-   padding:2%!important;
-
+.userHeader {
+  margin: 2% !important;
+  padding: 2% !important;
 }
-
