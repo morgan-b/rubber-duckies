@@ -35,7 +35,7 @@ app.use(express.json());
 // Define any API routes before this runs
 app.use(routes);
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "/../dist/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 
