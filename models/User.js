@@ -46,27 +46,27 @@ User.init(
     },
     happy: {
       type: DataTypes.TEXT,
-      defaultValue: ""
+      defaultValue: "",
     },
     sad: {
       type: DataTypes.TEXT,
-      defaultValue: ""
+      defaultValue: "",
     },
     nervous: {
       type: DataTypes.TEXT,
-      defaultValue: ""
+      defaultValue: "",
     },
     hungry: {
       type: DataTypes.TEXT,
-      defaultValue: ""
+      defaultValue: "",
     },
     thirsty: {
       type: DataTypes.TEXT,
-      defaultValue: ""
+      defaultValue: "",
     },
     restroom: {
       type: DataTypes.TEXT,
-      defaultValue: ""
+      defaultValue: "",
     },
     password: {
       type: DataTypes.STRING,

@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { Caregiver, User } = require("../../models");
 const bcrypt = require("bcrypt");
 
-
 // caregiver signup
 router.post("/cgsignup", async (req, res) => {
   try {
@@ -35,10 +34,8 @@ router.post("/usersignup", async (req, res) => {
   }
 });
 
-
 //caregiver login
 router.post("/cglogin", async (req, res) => {
-  console.log(req.body);
   try {
     const caregiverData = await Caregiver.findOne({
       where: { email: req.body.email },
@@ -67,24 +64,19 @@ router.post("/cglogin", async (req, res) => {
       req.session.caregiver_id = caregiverData.caregiverid;
       req.session.logged_in = true;
 
-      
-
       return res.json({
         caregiver: caregiverData,
         message: "You are now logged in!",
         cgloggedin: req.session.logged_in,
       });
-      
     });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-
 //user login
 router.post("/userlogin", async (req, res) => {
-  console.log(req.body);
   try {
     const userData = await User.findOne({
       where: { email: req.body.email },
@@ -124,7 +116,7 @@ router.post("/userlogin", async (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
