@@ -12,7 +12,10 @@ router.post("/cgsignup", async (req, res) => {
       req.session.caregiver_id = caregiverData.caregiverid;
       req.session.logged_in = true;
 
-      res.status(200).json(caregiverData);
+      res.status(200).json({
+        caregiver: caregiverData,
+        cgloggedin: req.session.logged_in
+      });
     });
   } catch (err) {
     res.status(400).json(err);
@@ -28,7 +31,10 @@ router.post("/usersignup", async (req, res) => {
       req.session.user_id = userData.userid;
       req.session.logged_in = true;
 
-      res.status(200).json(userData);
+      res.status(200).json({
+        user:userData,
+        loggedin:req.session.logged_in
+      });
     });
   } catch (err) {
     res.status(400).json(err);
