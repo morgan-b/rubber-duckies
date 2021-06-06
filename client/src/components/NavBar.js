@@ -1,25 +1,13 @@
-import session from "express-session";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import logo from "../assets/logo-duckies.png";
 import Apiroutes from "../utils/Apiroutes";
-//import {useUserContext, UserContext} from "../utils/AuthContext";
-
 
 function NavBar() {
-
- // const [userloggedin, setUserloggedin] = useState(false)
-
-  // function logOut() {
-  //   setUserloggedin(false)
-  //   console.log("LOGOUT CONTEXT", userloggedin )
-  // }
-
   const [userloggedin, setUserloggedin] = useState(false);
 
   useEffect(() => {
     const auth = localStorage.getItem("user");
-    console.log(auth);
 
     setUserloggedin(auth);
   }, []);
@@ -29,17 +17,15 @@ function NavBar() {
   const handleLogout = () => {
     Apiroutes.logOut().then((res) => {
       console.log("logged out");
-      //logOut()
       localStorage.clear();
       history.push("/login");
     });
   };
 
   return (
-    // <UserContext.Provider value= {{userloggedin, logOut}}>
     <nav className="navbar navbar-expand-lg navbar-light">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to={userloggedin ? ("/home"):("/profile")}>
+      <section className="container-fluid">
+        <Link className="navbar-brand" to={userloggedin ? "/home" : "/profile"}>
           <img src={logo} alt="logo" width="45" />
         </Link>
         <button
@@ -53,11 +39,11 @@ function NavBar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div
+        <section
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavLinks"
         >
-          <div className="navbar-nav">
+          <section className="navbar-nav">
             {userloggedin ? (
               <Link className="nav-link" to="/home">
                 Dashboard
@@ -68,14 +54,13 @@ function NavBar() {
               </Link>
             )}
 
-            <div className="nav-link logoutBtn" onClick={handleLogout}>
+            <section className="nav-link logoutBtn" onClick={handleLogout}>
               Logout
-            </div>
-          </div>
-        </div>
-      </div>
+            </section>
+          </section>
+        </section>
+      </section>
     </nav>
-   // </UserContext.Provider>
   );
 }
 
