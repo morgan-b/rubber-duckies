@@ -76,8 +76,8 @@ function App() {
             {cgloggedin ? <UserDetails /> : <Redirect to="/login" />}
           </Route>
 
-          <Route path="*">
-            <ErrorPage />
+          <Route path="/*" >
+          {res.sendFile(path.join(__dirname, "../client/build/index.html"))}
           </Route>
         </Switch>
       </Router>
