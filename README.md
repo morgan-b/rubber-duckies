@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+# Rubber Duckies
+A full stack REACT app.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)
+![badge](https://img.shields.io/badge/license-MIT-orange)
 
-## Available Scripts
+## Description
+A full stack application built using a MySQL and express backend and REACT frontend. App for facilitating communication for those who might experience difficulty communicating due to learning disabilities, social anxiety, etc. The App contains two user types and user experiences: the user making use of the app to communicate and the caregiver responsible for them.
 
-In the project directory, you can run:
+## User Story
 
-### `npm start`
+As a USER I should be able to create an account.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+When I create an account I should be presented with options to choose my preferred method of communicating a given emotion or need.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+When I have made my choices I should be presented with a homepage that shows my choices.
 
-### `npm test`
+When I need to communicate an emotion or need I should be able to click on the relevant emotion/need on my homepage.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When I click on the emotion/need, a popup should show the chosen emotion/need so I can show those around me to communicate better.
 
-### `npm run build`
+The emotion/need clicked on should also be saved to my account with a timestamp so my caregiver can view this information and be able to help me.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As a CAREGIVER I should be able to create an account.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+When I create an account or login, I should see my profile page with all the users I care for displayed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If I want to add a user to my profile I should be able to click on an 'add user' button and add a user by their ID.
 
-### `npm run eject`
+When I click on a user on my profile page, I should be able to see all the needs and emotions the user has clicked on displayed in easy to read charts and calenders. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Table of Contents
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing Guidelines](#contributing)
+* [License](#license)
+* [Questions](#questions)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Installation
 
-## Learn More
+This application was created using the React, express and MySQL. The deployed app can be found [here](https://damp-shelf-60845.herokuapp.com/).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The deployed app offers the best user experience, but for running the app locally, download the repo, run 'npm install' in the root folder and then 'npm start' to start the deveoplment server. App will be found at localhost:3000 if run locally.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Usage
 
-### Code Splitting
+When the user navigates to the app, they will be presented with a login page. Existng users can login here, existing cargivers can click on 'login as caregiver' button to login in or new users/caregivers can click on sign up button to create an account.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![login-demo](./demo-images/login-demo.png)
 
-### Analyzing the Bundle Size
+USERS:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+When a user signs up for the first time, they will be presented with an assessment where they will choose what color, image or word they would like to assign to each of the given emotions/needs. 
 
-### Making a Progressive Web App
+![welcome-demo](./demo-images/welcomeuser-demo.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![assessment-demo](./demo-images/assessment-demo.png)
 
-### Advanced Configuration
+Once the user has made their choices, they will be taken to their homepage where they will be presented with all the emotions and needs options(hungry, thirsty, restroom, happy, sad and nervous). 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![homepage-demo](./demo-images/homepage-demo.png)
 
-### Deployment
+When a user needs to communicate with their Caregiver or with those around them, they can click on the relevant emotion/need and a popup will show up on screen for the user to show those around them and their choice will also be saved to their account for the caregiver to see.
+Once a user is signed up for their account, sebsequent logins will take them directly to their homepage for an easy and uncomplicated user experience.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+CARGIVERS:
 
-### `npm run build` fails to minify
+When a caregiver signs up for the first time, they will be taken to their profile page where they will be prompted to add users to their account. They can add users by the users id (as caregivers are expected to help the users setup their accounts, they will be aware of the user's id). 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![profile-demo](./demo-images/caregiver-profile-demo.png)
+
+![adduser-demo](./demo-images/add-user-demo.png)
+
+Once users have been added, the caregiver will see all their chosen users on their profile page. Clicking on any user card will direct the caregiver to that user's details page where they will be able to see the emotions and needs the user clicked on and when they did so. This data will be displayed in a calender with timestamps, in piecharts as well as barcharts for easy parsing. 
+
+![user-details-demo](./demo-images/user-details-demo.png)
+
+
+## Contributing
+
+ ![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)
+
+ Link to Contributor's Covenant:[Contributors Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct/) 
+
+ 
+## License
+
+![badge](https://img.shields.io/badge/license-MIT-orange)
+   
+Copyright (c) [2021] [Nida Ghuman] [Morgan Bailey] [Israel Molestine] [Bhavika Patel]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
+
+## Questions
+
+The repo for this project can be found here: https://github.com/morgan-b/rubber-duckies
+
+Deployed project can be found at: https://damp-shelf-60845.herokuapp.com/
+
+Find us at github: 
+
+[Morgan Bailey](https://github.com/morgan-b)
+
+[Nida Ghuman](https://github.com/nidaqg)
+
+[Israel Molestina](https://github.com/Israel-Molestina)
+
+[Bhavika Patel](https://github.com/Bhavipatel21)
+
+
+
+
+
