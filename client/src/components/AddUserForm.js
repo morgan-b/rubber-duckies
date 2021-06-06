@@ -7,18 +7,6 @@ function AddUserForm(props) {
         <h4 className="m-3">Add an Existing User to Your Network</h4>
 
         <section className="mb-2">
-          <label className="form-label">User's username</label>
-          <input
-            name="username"
-            value={props.username}
-            type="text"
-            onChange={props.handleChange}
-            className="form-control"
-            id="username"
-          />
-        </section>
-
-        <section className="mb-2">
           <label className="form-label">User's ID</label>
           <input
             name="userid"

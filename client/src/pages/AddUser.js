@@ -7,7 +7,6 @@ import Apiroutes from "../utils/Apiroutes";
 
 function AddUser() {
   const [addUser, setAddUser] = useState({
-    username: "",
     userid: "",
   });
 

@@ -11,7 +11,6 @@ function Login() {
   //use state to set email and password from user input + set usertype
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [usertype, setUsertype] = useState("");
   const [state, setState] = useState("");
   const history = useHistory();
 
