@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import logo from "../assets/logo-duckies.png";
 import Apiroutes from "../utils/Apiroutes";
 
-function NavBar() {
+function NavBar(props) {
   const [userloggedin, setUserloggedin] = useState(false);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ function NavBar() {
           <section className="navbar-nav">
             {userloggedin ? (
               <Link className="nav-link" to="/home">
-                Dashboard
+               Hello {props.username}!
               </Link>
             ) : (
               <Link className="nav-link" to="/profile">
