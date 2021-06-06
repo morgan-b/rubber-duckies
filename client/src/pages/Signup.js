@@ -5,9 +5,11 @@ import "./style.css";
 import LoginWrapper from "../components/LoginWrapper";
 import SignupForm from '../components/SignupForm';
 import Apiroutes from '../utils/Apiroutes';
+import {useUserContext} from "../utils/AuthContext";
 
 
 function Signup() {
+  const {logIn, cgLogIn} = useUserContext()
   //initialize state with empty fields
 const [signupInfo, setSignupInfo] = useState({
   firstname: "",
@@ -42,42 +44,29 @@ const handleSubmit = (e) => {
     Apiroutes.userSignup(signupInfo)
     .then(res => {
       console.log("user signed in")
+      console.log(res.data)
+      logIn(res.data.loggedin)
       localStorage.clear()
       localStorage.setItem('user', true)
-      history.push("/welcomeuser")
+      history.push({pathname:"/welcomeuser", state:res.data.user})
+
     })
-    // .then (res => {
-    //   if(localStorage.getItem("user") === true) {
-    //     history.push("/welcomeuser")
-    //         }
-    //         else {
-    //             setTimeout(() => {
-    //                 history.push("/welcomeuser")
-    //                 window.location.reload()
-    //             }, 1000)
-    //         }
-    // })
     .catch(err => console.log(err))
   }
   else if (usertype === "caregiver") {
     Apiroutes.cgSignup(signupInfo)
     .then(res => {
       console.log("caregiver signed in")
+      console.log(res)
+      cgLogIn(res.data.cgloggedin)
       localStorage.clear()
       localStorage.setItem('caregiver', true)
-      history.push("/profile")
     })
-      // .then (res => {
-      //   if(localStorage.getItem("caregiver") === true) {
-      //     history.push("/profile")
-      //         }
-      //         else {
-      //             setTimeout(() => {
-      //                 history.push("/profile")
-      //                 window.location.reload()
-      //             }, 1000)
-      //         }
-      // })
+    .then (res => {
+      history.push("/profile")
+
+    })
+    
     .catch(err => console.log(err))
   }
 }
