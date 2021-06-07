@@ -28,7 +28,9 @@ function Homepage() {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
+    setTimeout(() => {
     getUserEmotions();
+    }, 200)
   }, []);
 
   const getUserEmotions = () => {
