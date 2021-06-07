@@ -65,7 +65,7 @@ function Assessment() {
   function handleFormSubmit(event) {
     event.preventDefault();
     const client = createClient(
-      "563492ad6f917000010000017249237531774afd843890629876d160"
+      process.env.REACT_APP_API_KEY
     );
     const query = formObject.value;
 
