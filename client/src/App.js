@@ -36,44 +36,44 @@ function App() {
     <UserContext.Provider value={{ loggedin, cgloggedin, logIn, cgLogIn }}>
       <Router>
         <Switch>
-          <Route exact path={"/signup"}>
+          <Route exact path={"/#/signup"}>
             <Signup />
           </Route>
 
-          <Route exact path={["/", "/login"]}>
+          <Route exact path={["/#", "/#/login"]}>
             <Login />
           </Route>
 
-          <Route exact path={"/cglogin"}>
+          <Route exact path={"/#/cglogin"}>
             <CgLogin />
           </Route>
 
-          <Route exact path={"/home"}>
-            {loggedin ? <Homepage /> : <Redirect from="/home" to="/login" />}
+          <Route exact path={"/#/home"}>
+            {loggedin ? <Homepage /> : <Redirect from="/#/home" to="/#/login" />}
           </Route>
 
-          <Route exact path={"/welcomeuser"}>
+          <Route exact path={"/#/welcomeuser"}>
             {loggedin ? (
               <WelcomeUser />
             ) : (
-              <Redirect from="/welcomeuser" to="/login" />
+              <Redirect from="/#/welcomeuser" to="/#/login" />
             )}
           </Route>
 
-          <Route exact path={"/assessment"}>
-            {loggedin ? <Assessment /> : <Redirect to="/login" />}
+          <Route exact path={"/#/assessment"}>
+            {loggedin ? <Assessment /> : <Redirect to="/#/login" />}
           </Route>
 
-          <Route exact path={"/profile"}>
+          <Route exact path={"/#/profile"}>
             {cgloggedin ? <Profile /> : <Login />}
           </Route>
 
-          <Route exact path={"/adduser"}>
-            {cgloggedin ? <AddUser /> : <Redirect to="/login" />}
+          <Route exact path={"/#/adduser"}>
+            {cgloggedin ? <AddUser /> : <Redirect to="/#/login" />}
           </Route>
 
-          <Route exact path={"/userdetails"}>
-            {cgloggedin ? <UserDetails /> : <Redirect to="/login" />}
+          <Route exact path={"/#/userdetails"}>
+            {cgloggedin ? <UserDetails /> : <Redirect to="/#/login" />}
           </Route>
 
 
