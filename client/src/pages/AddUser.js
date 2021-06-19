@@ -20,8 +20,9 @@ function AddUser() {
 
   const handleAddUser = (e) => {
     e.preventDefault();
-
-    Apiroutes.checkUser(addUser)
+    let userid = addUser.userid
+    
+    Apiroutes.checkUser(userid)
       .then((res) => {
         console.log("user found!");
 

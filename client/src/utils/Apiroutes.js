@@ -20,8 +20,8 @@ assessmentSave: function (userChoice) {
     return axios.put(`api/assess`, userChoice)
 },
 
-checkUser: function (addUser) {
-    return axios.get("api/page", addUser)
+checkUser: function (userid) {
+    return axios.get(`api/page/user/${userid}`)
 },
 
 addUser: function (addUser) {
