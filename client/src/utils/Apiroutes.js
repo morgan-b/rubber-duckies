@@ -21,7 +21,7 @@ assessmentSave: function (userChoice) {
 },
 
 checkUser: function (addUser) {
-    return axios.get("/", addUser)
+    return axios.get("page/user", addUser)
 },
 
 addUser: function (addUser) {
@@ -33,11 +33,11 @@ getCaregiver: function () {
  },
  
 populateProfile: function () {
-   return axios.get("/profile")
+   return axios.get("page/profile")
 },
 
 getUserData: function () {
-    return axios.get("/useremotions")
+    return axios.get("page/useremotions")
 },
 
 saveUserAction: function (userinput) {
