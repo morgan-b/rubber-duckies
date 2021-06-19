@@ -10,9 +10,9 @@ router.use("/", userRoutes);
  // res.status(404).end();
 //});
 
-router.use(function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+//router.use(function (req, res) {
+  //res.sendFile(path.join(__dirname, "../client/build/index.html"));
+//});
 
 router.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
