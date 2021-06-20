@@ -32,6 +32,11 @@ function App() {
     console.log("CG CONTEXT", cgloggedin);
   }
 
+  window.onbeforeunload = (event) => {
+   event.preventDefault()
+   event.returnValue = ''
+  }
+
   return (
     <UserContext.Provider value={{ loggedin, cgloggedin, logIn, cgLogIn }}>
       <Router>
