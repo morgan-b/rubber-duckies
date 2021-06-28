@@ -13,29 +13,24 @@ import Assessment from "./pages/Assessment";
 import AddUser from "./pages/AddUser";
 import WelcomeUser from "./pages/WelcomeUser";
 import UserDetails from "./pages/userDetails";
-import ErrorPage from "./pages/ErrorPage";
+//import ErrorPage from "./pages/ErrorPage";
 import CgLogin from "./pages/CgLogin";
 import { UserContext } from "./utils/AuthContext";
 
 function App() {
-  const [loggedin, setLoggedin] = useState(false);
-  const [cgloggedin, setcgLoggedin] = useState(false);
 
-  console.log(process.env.NODE_ENV);
+  const [loggedin, setLoggedin] = useState(localStorage.getItem("user") || false);
+  const [cgloggedin, setcgLoggedin] = useState(localStorage.getItem("caregiver") || false);
+
   function logIn(data) {
+    console.log(data)
     setLoggedin(data);
-    console.log("LOGIN CONTEXT", loggedin);
   }
 
   function cgLogIn(data) {
     setcgLoggedin(data);
-    console.log("CG CONTEXT", cgloggedin);
   }
-
-  window.onbeforeunload = (event) => {
-   event.preventDefault()
-   event.returnValue = ''
-  }
+ 
 
   return (
     <UserContext.Provider value={{ loggedin, cgloggedin, logIn, cgLogIn }}>
