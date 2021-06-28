@@ -12,12 +12,14 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  // app.set('trust proxy', 1) // trust first proxy
+  // sess.cookie.secure = true // serve secure cookies
 }
 
 const sess = {
   secret: "Super secret secret",
   cookie: {
-    // Session expiration is set to 60 minutes
+     //Session expiration is set to 60 minutes
     expires: 60 * 60 * 1000,
   },
   resave: false,
@@ -34,9 +36,9 @@ app.use(express.json());
 // Send every request to the React app
 // Define any API routes before this runs
 app.use(routes);
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "/client/build/index.html"));
-});
+ app.get("/*", function (req, res) {
+   res.sendFile(path.join(__dirname, "/client/build/index.html"));
+ });
 
 
 sequelize.sync({ force: false }).then(() => {
